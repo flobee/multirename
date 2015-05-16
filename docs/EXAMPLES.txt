@@ -1,0 +1,120 @@
+# Examples for Multirename
+
+## Simple replacements/ substitutions:
+
+### Example:
+
+Delete all spaces in filenames and replace it with an underscore and remove the 
+word "this" if it exists:
+
+    multirename --path 'YOUR_PATH' \
+        --fileextensions '*' \
+        --substitutions ' =_;this' \
+        --keepcopy  \
+        --test
+
+    or:
+    multirename --path 'YOUR_PATH' -e '*' -s ' =_;this' --keepcopy --test
+
+
+### Beautifing hyphen, comma and colon?
+
+You substitution could look like: 
+
+    --substitutions '-=_-_;,=_-_;:=_-_'
+
+
+### Show a saved configuration:
+
+    multirename --from-config 'YOUR_PATH' --show-config --test
+
+
+### Use a saved configuration
+
+Use a saved configuration but test befor, then execute it and save the 
+configuration again (YOUR_PATH belongs to the path where your file are):
+
+    multirename --from-config 'YOUR_PATH' --test
+
+    multirename --from-config 'YOUR_PATH' --set-config
+
+As you can see, using --test is always a good option to avoid problems!
+
+
+
+## For the vdr project this can help:
+
+### Example 1:
+
+Check the difference in simple recordings and series recordings in vdr.
+The following example is for simple recordings!
+You may split your recordings in sub-folders like "movies" and "series".
+Change request for vdradmin-am already exists: http://projects.vdr-developer.org/issues/2137)
+
+    multirename --path 'YOUR_RECORDING_PATH_FOR_MOVIES' \
+        --fileextensions ts;m2t;mpg;mpeg; \
+        --substitutions ' =_;#3A=_-_;:_=_-_;regex:/^(\d{5}|info|marks)$/i=../%path2%_-_$1;_-_marks=.marks;_-_info=.nfo' \
+        --keepcopy  \
+        --recursive \
+        --sub-paths \
+        --test
+    
+Would do e.g.:
+
+    old: 00001.ts
+    new: ../True_Grit.ts
+    old: marks
+    new: ../True_Grit.marks
+    old: info
+    new: ../True_Grit.nfo
+
+The default pattern for vdr recordings and maybe created mpg's 00001.ts.mpg:
+ 
+    regex:/^(\d{5}|\d{5}\.ts|info|marks)$/i
+
+
+### Example 2:
+
+This example is for my series. When recording i use different subfolders like: 
+Movie, Series, Doc, DocSeries so i can run multirename automatically without 
+much attention. At the end of the substitutions parameter you find some specific
+words for german television i dont want to have.:
+
+    multirename --path 'YOUR_PATH_TO_SERIES' \
+        --fileextensions 'ts;m2t;mpg;mpeg' \
+        --substitutions ' =_;#3A=_-_;:_=_-_;regex:/^(\d{5}|info|marks)$/i=../../%path3%_-_%path1%_-_%path2%_-_$1;regex:/(\d{4}-\d{2}-\d{2})(.*.rec)(.*)/i=$1$3;_-_marks=.marks;_-_info=.nfo;regex:/(.*)(,(_Science-Fiction|_Action|_Drama),_USA_\d)(.*)/=$1;,_Scienc_=_;,_Magazin,_D;Thema_u._a._-_=ua_;,_Mag_-_=_-_;,_Magazin,;,_Magazi;,_Mag;,_Wissensmagazin,_D;_u._a.:_=_ua_' \
+        --keepcopy  \
+        --recursive \
+        --sub-paths \
+        --test
+
+Would do e.g. (in real i just create relative symlinks --link 'soft;rel' and 
+don't rename the files!):
+
+    old: 00001.ts ...TO:
+    new. ../../The_Flash_-_2015-03-31_-_Der_Mann_in_Gelb_-_00001.ts
+
+    old: marks ...TO:
+    new: ../../The_Flash_-_2015-03-31_-_Der_Mann_in_Gelb.marks
+
+    old: info ...TO:
+    new: ../../The_Flash_-_2015-03-31_-_Der_Mann_in_Gelb.nfo
+
+
+
+## Synology DTV TV recordings:
+
+    multirename --path 'YOUR-SYNO-RECORDING-PATH' \
+        -e "ts;m2t;mpg;mpeg"
+        -s 'regex:/^(\d{4}-\d{2}-\d{2}_\d{4})?(.*)/i=$2_-_$1;regex:/(_.{1,20}_)+(.*?)(_-_\d{4}-\d{2}-\d{2}_\d{4})$/i=$2$3;regex:/(_-_)$/i; =_' \
+        --sub-paths \
+        --history \
+        --test
+
+Would do e.g.:
+
+    old: 2014-08-16_1410_RTL2_Merlin.ts
+    new: Merlin_-_2014-08-16_1410.ts
+
+
+

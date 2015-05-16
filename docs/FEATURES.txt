@@ -1,0 +1,42 @@
+# Features
+
+-   Simple replacements or removes.
+    Look for a sign and replace it with another one. E.g.: Change all spaces in
+    filenames with an underscore (_).
+
+-   Replacements using pcre engine (Perl compatible regular expressions).
+    Regular expressions are patterns detection. With filenames it can help to
+    split complex names to rebuild the filename you need. E.g.:
+        
+        "2015-01-01-20.00.00 The daily news.mpg"
+        will become
+        "daily_news_-_2015-01-01.mpg"
+
+-   Find relevant files or directorys by a list of search keywords or regular 
+    expressions.
+
+-   Renaming including the path or breadcrumbs of the path the file belongs to.
+    The path or the parts of it are always available to be used for the
+    replacement.
+
+-   Replacements including regular expressions and including path replacements
+    in a regular exression. E.g.: /(%path2%)?(.*)?(\d{5})?/i
+    Checkout the examples for more.
+
+-   Creation of hard links or symlinks, relative or absolut instead of renaming
+    the files. Including relocating in this case. "this" goes "../in/here/that"
+
+-   Possibility to undo an action.
+
+-   A test mode to check the results when starting a rename process.
+
+-   Presets: Possibility to save/update/delete a configuration. E.g. for a later 
+    usage or batch processing like cron, at, batch...
+
+-   Scan for matches in a recusivly way or just files in the given directory.
+
+-   Scan for all files or a given list of file extensions. E.g.: doc;docx;xls
+
+-   More features to come. Some are already in the code marked as TODO.
+
+

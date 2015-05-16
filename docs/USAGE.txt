@@ -1,0 +1,142 @@
+# Usage of Multirename
+
+## Forword
+
+- At the moment only the filename without the file extension will be handled.
+
+- Internally always the long options will be used. If you use short options, no 
+problem, but if you want to see the saved configuration the long options will be 
+shown and used.
+
+For the moment (may be for all the time):
+
+- A logger tracks all actions to a log file (default in /tmp/ (max.3MB) if you 
+dont change it). This make sence in the current state of the program to find and 
+debug open or not detected bugs for you, me....
+
+- Configurations can be saved but only one config per path at the moment. (i'm 
+still thinking about to extend it or not! It make things complicated and a GUI 
+would be the next step to handle thouse parts. Maybe someone likes do it? :-)
+
+
+## Hints
+
+- When executing the program you may think something went wrong because it seems
+that the programm hangs: Probably you have enabled the --keepcopy flag and there
+is a hugh file which will be copied and not renamed! Dont break operations! This
+can loose informations for recovery/ undo action. Have look at the log file 
+first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
+
+
+## Options
+
+    --test|-t
+        Flag: Test before execute. You should use it as many as possible befor 
+        pressing <enter>!
+
+    --path|-p
+        Path to scann for files (tailing slash is important!); Required
+
+    --fileextensions|-e
+        Semicolon separated list of file extensions to scan for eg. "avi;AVI;mpg;
+        MPG" or "*" (with quotes) for all files; Required
+
+    --substitutions|-s
+        Semicolon separated list with key=value (search=replace) pairs for the 
+        substitution. E.g.: --substitutions 
+        'ä=ae;ö=oe;ß=ss; =_;regex:/^(\d{5})$/i=x_path_-_%path2%_-_match_-_$1'
+        As simple feature you can use %path1%...%pathN% parameters to substitute 
+        path informations in replacement value the file belongs to.
+        For more information see --sub-paths. If you decide later to use 
+        --sub-paths with your existing substitutions it can became strange side 
+        effects when enabling it. Check/ test the results first; Required
+
+    --sub-paths
+        Flag; Enable substitution for paths. A feature for the substitution: 
+        Breadcrumbs of the --path can be found/ substituted with %path1% - 
+        %pathN% in reverse. If you want to rename files and want to add the 
+        folder the file belongs to you can use %path1%. One folder above is 
+        %path2% and so on until the given root in --path. 
+        Example: /var/files/records
+            %path0% = /var/files/records
+            %path1% = records
+            %path2% = files
+            %path3% = var
+        With this option you can also replace %pathN% in keys or values and also
+        in regular expressions.
+        Use the --test flag to test and check the results!
+        Note: Enabling this feature can change the behavior of existing 
+        substitutions! This happen often e.g. when rename words which exists in 
+        the name or replacement and also in the path you want to use or rename.
+
+    --find|-f
+        Optional; Find files in a semicolon seperated list of search keywords or 
+        regular expressions (starting with "regex:". The list will be handled in
+        OR conditons. The keyword must match with a part of the string in the 
+        file location (path and filename).
+
+    --recursive|-r
+        Flag; Read all files under each directory starting from --path 
+        recursively. 
+        If a new configuration exists below this start directory it will be 
+        ignored! Use --batch mode for this action.
+
+    --keepcopy
+        Flag; Keep existing file/s which will always add a '.1' suffix. When 
+        running twice it will became '.1.1' as suffix.
+
+    --hidden
+        Include hidden (dot) files to be renamed
+
+    --link
+        soft|hard[;rel|abs]); Don't rename, create symlinks or hardlinks, 
+        relativ or absolut to target. Values: soft|hard[;rel|abs]. If the second 
+        parameter is not given relativ (rel) links will be created.
+
+    --linkway
+        Optional; Type of the link to be created: relative or absolut (rel|abs), 
+        default: "rel". This will be used internally. If you use --link soft;rel
+        the linkway will be extracted from that line.
+
+    --history|-h
+        Flag; This will enable the history/ for the moment ONLY the last action 
+        with the option to undo it.
+
+    --batch
+        Not implemented yet. 
+        Flag; Run the job recusivly from given --path as start 
+        directory and start renaming. If a new configuration in the sub 
+        directories exists it trys to load the configuration for the batch-mode 
+        and execute it. This enables --recursiv and --history;
+
+    --undo
+        Flag; Revers/ undo the last action.
+
+    --from-config
+        Read saved configuration from given path and execute it.
+
+    --set-config
+        Flag; Sets, replaces existing configuration, and saves the parameters to
+        a config file in the given path which adds a new folder ".multirename" 
+        for later use with --from-config.
+
+    --del-config
+        Flag; Deletes the config from given --path.
+
+    --show-config
+        Flag; Shows the config parameter from a saved config to check or rebuild
+        it. Use it with --from-config otherwise the current cmdlime comes back.
+
+    --loglevel|--ll
+        Logging level for the output of messages (0=Emerg ... 7=verbose/debug).
+        For testing use 6 or 7; For cronjob/ batch etc. do not use lower than 5 
+        to get important messages.
+
+    --version|-v
+        Flag; Show version informations
+
+    --help|-h
+        Show this help.
+
+
+

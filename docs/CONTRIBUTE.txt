@@ -1,0 +1,81 @@
+# Contributions
+
+## Contributors are welcome!
+
+Checkout a branch of master|testing|unstable including updates and switching
+to one of it and including the externals with updates, use the helper script:
+
+    ./helper/gitupdate.sh [branchname]
+
+I decide to use staging areas to keep the "master" clean of bugs as good as 
+possible and for maximum of stability.
+
+Staging areas are "unstable" -> "testing" -> "master"
+
+"master" should be always the latest stable release! (Incl. Hotfixes)
+
+All new code/ development shoud go to "unstable". 
+Also, if needed, to the externals which having also these staging areas.
+
+If you would like to add features or push some improvements: The unstable branch 
+is basicly the entry point and the latest code base.
+Checkout the "unstable" branch create a new branch for your part to start in.
+    
+    git clone https://github.com/flobee/multirename.git
+    cd multirename
+    ./helper/gitupdate.sh unstable
+    git checkout -b yourNewBranch
+
+Note: You may also create own branches for the existing externals
+
+    cd external/<name>
+    git checkout -b yourNewBranch
+
+If tests exists and the function of fixed bugs, new features is verified it will
+be merged to "testing" (collecting the updates, versions, features)... for the 
+next release candidate or sub releases.
+
+Hotfixes will go to extra branches and will be merged directly to the "master".
+
+When merging branches take a look into .gitmodules of _each_ branch and verify
+that the branches still map to the branch name of the master project.
+E.g.: The branch "testing" of the project maps to the "testing" branch of the
+submodules eg. the library, and so on. 
+For this reason you may use the helper script more often and follow this 
+workflow: 
+
+    # checkout given branch of the main project
+    # init, updates and pulls the submodules for the given branch
+    ./helper/gitupdate.sh [unstable|testing|master]
+
+    # After a merge, e.g.:
+    ./helper/gitupdate.sh testing
+    git merge unstable
+    # you need to check if it maps to testing and not unstable branches
+    ls -al .gitmodules # which should link to the testing file
+
+
+## Deployment
+
+The build/make.php file will help to create files for the deployment e.g. if you 
+would like to create new readme.md/wiki entrys or to create a release. All text 
+files in the docs/ are involved. If you modify them there using markdown syntax 
+the deployment and the creation with new documentation will be generated.
+
+    # Will generate .md files for the wiki and the summary file /README.md
+    php make.php deploy
+
+    # will also create a new tar file with the release version in /deploy (the
+    # version string must match to the current version of the multirename class)
+    php make.php deploy '1.0.0-RC1'
+
+Please use `make.php clean` after a deploy to not commit those files to the 
+repository.
+
+When commiting new stuff you should first commit the externals changes and at 
+least the project version. The external commit ID should map to the commit ID of
+the project when other people will check it out. I know this is not that handy 
+but i have no other/better idea at the moment to handle it.
+
+
+
