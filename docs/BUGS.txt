@@ -1,0 +1,11 @@
+# Bugs
+
+There are one or some and hopefully none! This is alpha version! After writing 
+the tests (done) some has been removed. 
+Be sure using the --test mode and check all results! Have a look at the output 
+when substitution or search keywards having special characters e.g: ? & ... 
+I think the pcre engine does not like it but i haven't checked it yet.
+
+Your help would be great to find bugs or add features and improvements.
+
+
