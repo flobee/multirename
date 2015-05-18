@@ -29,13 +29,13 @@ spl_autoload_register( array( 'Mumsys_Loader', 'autoload'));
 $docs = array(
     'README.txt' => 'externals/multirename.wiki/Home.md',
     // 'SUMMARY.txt', // content to be generated where the "# Summary" tag is
-    'FEATURES.txt'  => 'externals/multirename.wiki/_Features-of-multirename.md',
-    'EXAMPLES.txt'  => 'externals/multirename.wiki/_Examples-for-multirename.md',
-    'INSTALL.txt'   => 'externals/multirename.wiki/_Installing-multirename.md',
-    'USAGE.txt'     => 'externals/multirename.wiki/_Usage-of-multirename.md',
-    'CONTRIBUTE.txt'=> 'externals/multirename.wiki/_Contributions.md',
-    'LICENSE.txt'   => 'externals/multirename.wiki/License-for-multirename.md',
-    'AUTHORS.txt'   => 'externals/multirename.wiki/Contribution_Authors.md',
+    'FEATURES.txt'  => 'externals/multirename.wiki/1_Features-of-multirename.md',
+    'EXAMPLES.txt'  => 'externals/multirename.wiki/2_Examples-for-multirename.md',
+    'INSTALL.txt'   => 'externals/multirename.wiki/3_Installing-multirename.md',
+    'USAGE.txt'     => 'externals/multirename.wiki/4_Usage-of-multirename.md',
+    'CONTRIBUTE.txt'=> 'externals/multirename.wiki/5_Contributions.md',
+    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
+    'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
     'BUGS.txt',
     'HISTORY.txt'
 );
@@ -121,7 +121,7 @@ function makeReadmeMd()
                 if (!isset($prefix[0])) {
                     echo 'ERROR with line: "' . $line . '"' . PHP_EOL;
                 }
-                
+
                 $prefix[0] = str_replace('#', '-', $prefix[0]);
                 $prefix = str_replace('-#', "\t-", $prefix);
                 $line = trim($line);
