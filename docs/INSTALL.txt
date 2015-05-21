@@ -97,7 +97,7 @@ This shows you how to create your own multirename.phar file or building a new
 release.
 
 
-## Options
+## Build options
 
 1. php make.php install
 2. php make.php clean

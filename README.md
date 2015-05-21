@@ -37,19 +37,21 @@ latest version you will find at the "unstable" branch.
 	- [Developer install](#developer-install)
 	- [The program comes in two flavors](#the-program-comes-in-two-flavors)
 - [Build](#build)
-	- [Options](#options)
+	- [Build options](#build-options)
 - [Usage of Multirename](#usage-of-multirename)
 	- [Forword](#forword)
 	- [Hints](#hints)
-	- [Options](#options)
+	- [Usage options](#usage-options)
 - [Contributions](#contributions)
 	- [Contributors are welcome!](#contributors-are-welcome)
 	- [Deployment](#deployment)
 - [License](#license)
 - [Authors](#authors)
+	- [Contributed features](#contributed-features)
+- [Implemented suggestions](#implemented-suggestions)
 	- [Core developers](#core-developers)
 - [Bugs](#bugs)
-- [About / History](#about-history)
+- [History](#history)
 
 
 
@@ -314,7 +316,7 @@ This shows you how to create your own multirename.phar file or building a new
 release.
 
 
-## Options
+## Build options
 
 1. php make.php install
 2. php make.php clean
@@ -397,7 +399,7 @@ can loose informations for recovery/ undo action. Have look at the log file
 first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
 
 
-## Options
+## Usage options
 
     --test|-t
         Flag: Test before execute. You should use it as many as possible befor 
@@ -762,6 +764,18 @@ Library.
 
 # Authors
 
+## Contributed features
+
+<Developer>
+    <Feature Description>
+
+
+# Implemented suggestions
+
+<Name>
+    <Feature Description>
+
+
 ## Core developers
 
 Florian Blasel
@@ -778,14 +792,14 @@ I think the pcre engine does not like it but i haven't checked it yet.
 Your help would be great to find bugs or add features and improvements.
 
 
-# About / History
+# History
 
-The program is made for users which have not that detailed knowlege using the
+Multirename is made for users which have not that detailed knowlege using the
 shell. Also me :-) but i know php and find my solution to help myself for a
 solution to rename files like i need it. Multirename was born.
-Nothing new! And maybe already done anywhere in any rename program. 
-Maybe some of my ideas will find useful, finds a new home ... Hopfully it will 
-stay here :-)
+Nothing new! And maybe already done anywhere in any rename program.
+Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
+will stay here :-)
 The very beginning of this program was in ~2002 and now, again because of music
 and video files the vdr (video disk recording) project gave me the idea to
 finish this program including some features i was looking for.

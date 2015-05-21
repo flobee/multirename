@@ -16,6 +16,7 @@
     - init staging areas: 
         - add testing and unstable branches
     - new features :-)
+- Stable version: 1.2.0 as release 1                            2015-05-21
 
 
 
