@@ -1,11 +1,11 @@
-# About / History
+# History
 
-The program is made for users which have not that detailed knowlege using the
+Multirename is made for users which have not that detailed knowlege using the
 shell. Also me :-) but i know php and find my solution to help myself for a
 solution to rename files like i need it. Multirename was born.
-Nothing new! And maybe already done anywhere in any rename program. 
-Maybe some of my ideas will find useful, finds a new home ... Hopfully it will 
-stay here :-)
+Nothing new! And maybe already done anywhere in any rename program.
+Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
+will stay here :-)
 The very beginning of this program was in ~2002 and now, again because of music
 and video files the vdr (video disk recording) project gave me the idea to
 finish this program including some features i was looking for.

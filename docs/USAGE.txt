@@ -28,7 +28,7 @@ can loose informations for recovery/ undo action. Have look at the log file
 first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
 
 
-## Options
+## Usage options
 
     --test|-t
         Flag: Test before execute. You should use it as many as possible befor 
