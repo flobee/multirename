@@ -29,11 +29,11 @@ svn/*
 /.project
 /.buildpath
 /nbproject
-/phpunit.log.xml
+phpunit.log.xml
 
 /docs/CodeCoverage/*
 /docs/API/*
 /tests/testfiles/*
 /build/stub.php.min
-
+/build/multirename.phar
 logs/
