@@ -36,4 +36,5 @@ phpunit.log.xml
 /tests/testfiles/*
 /build/stub.php.min
 /build/multirename.phar
+/build/multirename-*.phar
 logs/
