@@ -3,6 +3,11 @@
 /**
  * Multirename bootstrap for tests
  */
+
+if (in_array('root',$_SERVER)) {
+    exit('Something belongs to root. Use a different user!' . PHP_EOL);
+}
+
 ini_set('memory_limit', '64M');
 date_default_timezone_set('Europe/Berlin');
 
@@ -27,7 +32,7 @@ class MumsysTestHelper extends PHPUnit_Framework_TestSuite
     public static function getConfig()
     {
         if ( !isset(self::$_config) ) {
-            self::$_config = Mumsys_Config::getInstance();
+            self::$_config = Mumsys_Context::getConfig();
         }
 
         return self::$_config;
