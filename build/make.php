@@ -34,8 +34,8 @@ $docs = array(
     'INSTALL.txt'   => 'externals/multirename.wiki/3_Installing-multirename.md',
     'USAGE.txt'     => 'externals/multirename.wiki/4_Usage-of-multirename.md',
     'CONTRIBUTE.txt'=> 'externals/multirename.wiki/5_Contributions.md',
-    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
     'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
+    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
     'BUGS.txt',
     'HISTORY.txt'
 );

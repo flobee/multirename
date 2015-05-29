@@ -1,2 +1,6 @@
 # Changes of Multirename
 
+2015-05-24
+    Fixes handling of shell arguments in library; Fixes issue #1
+
+
