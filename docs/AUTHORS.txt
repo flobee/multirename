@@ -6,7 +6,7 @@
     <Feature Description>
 
 
-# Implemented suggestions
+## Implemented suggestions
 
 <Name>
     <Feature Description>
