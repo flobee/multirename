@@ -1,40 +1,42 @@
 # TODOs for Multirename
 
-#2 global substitutions as prefix or suffix to current substitutions?
+## Reported issues
+- [ ] #2 global substitutions as prefix or suffix to current substitutions?
 
 
 # New Features
 
 ## this is the creative zone
 
-@todo Config files centalized or where it happens?
-where it happens:
-     - bad 
-         on multi-user systems: file permission problems (eg. shared folders)
-         no config share (can be help-/useful eg in: /var/)
-     - good 
-         to look directly in the config file where the action belongs to
-@todo using presets? individual names for a config incl. date informations
-@todo extend config, usage of different config setups/presets
---> presets in the local storage with --preset option? yes, sounds good!
+- [ ] Config files centalized or where it happens?
+      where it happens:
+      - bad 
+          on multi-user systems: file permission problems (eg. shared folders)
+          no config share (can be help-/useful eg in: /var/)
+      - good 
+          to look directly in the config file where the action belongs to
+- [ ] using presets? individual names for a config incl. date informations
+- [ ] extend config, usage of different config setups/presets
+      --> presets in the local storage with --preset option? yes, sounds good!
 
-@todo rename list of given (existing|nonexisting?) files
-    output shell args or a list of from->to?
+- [ ] rename list of given (existing|nonexisting?) files or output shell args 
+      or a list of from->to?
 
-@todo rename list of given files in a text file
+- [ ] rename list of given files in a text file
 
-@todo scan for fileextensions given by a regex? without extension?
+- [ ] scan for fileextensions given by a regex? without extension?
 
-@todo extend history, multiple undo's, detection of already removed files.. 
-    what to do then? how to report? if target file exists (keep copy or replace? in batch?) ?
+- [ ] extend history, multiple undo's, detection of already removed files.. 
+      what to do then? how to report? if target file exists (keep copy or 
+      replace? in batch?) ?
 
-@todo extend rename function to substitute the hole filename including extension
+- [ ] extend rename function to substitute the hole filename including extension
 
 
 @todo windows? cygwin: yes must work. most of the lib was created on it in that 
     time :-) but nativ support with c:\php.exe multirename.php ?
     how to link/symlink, how to hidden files
 
-@todo improve the (test)output. limit messages e.g.: 'DONE'
+- [ ] improve the (test)output. limit messages e.g.: 'DONE'
 
 
