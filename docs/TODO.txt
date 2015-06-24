@@ -39,6 +39,6 @@
 
 - [ ] improve the (test)output. limit messages e.g.: 'DONE'
 
-- [ ] cleanup code: eg: substitution in a new methode, testmode in a new methode 
+- [33%] cleanup code: eg: substitution in a new methode, testmode in a new methode 
       eg: actionTest(), actionRename()
 
