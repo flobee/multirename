@@ -1,5 +1,13 @@
 # Changes of Multirename
 
+2015-06-24
+    - new Version: 1.2.3
+    - Improves output messages in test mode
+    - Adds --find option
+    - Improves crap index of run() method 
+    - Adds method _substitution()
+    - Improves/ Updates tests
+
 2015-05-24
     Fixes handling of shell arguments in library; Fixes issue #1;
     Set VERSION 1.2.1
