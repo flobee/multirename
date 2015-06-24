@@ -247,7 +247,7 @@ Deployment tasks: Please read the CONTRIBUTE.txt informations
 Options:
     php make.php install
     php make.php clean
-    php make.php deploy [optional: releaseVersionID]
+    php make.php deploy [optional: VersionID to create a bundled tar file]
 
 
 EOTXT;
