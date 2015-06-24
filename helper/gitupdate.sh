@@ -13,7 +13,7 @@
 # If you have /bin/dash then change the shebang if /bin/sh does not link to it.
 # Alternativly use /bin/ash
 #
-# run: ./helper/gitupdate.sh # or change paths/locations here
+# run: ./helper/gitupdate.sh [branch:master|testing|unstable]
 #
 # Checkout a branch of master|testing|unstable including updates and switching
 # to it and including the externals,
@@ -33,6 +33,11 @@
 # E.g.: The branch testing of the project maps to the testing branch of the
 # submodules eg. library and so on.
 ###############################################################################
+
+if [ "" = "$1" ]; then
+    echo "# run: ./helper/gitupdate.sh [branch:master|testing|unstable]";
+    exit 1;
+fi
 
 for mybranch in master testing unstable
 do
