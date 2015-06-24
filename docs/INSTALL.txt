@@ -147,6 +147,6 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-[docs/](/flobee/multirename/tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/master/docs/CONTRIBUTE.txt)
 
 

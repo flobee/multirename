@@ -19,7 +19,7 @@ word "this" if it exists:
 
 ### Beautifing hyphen, comma and colon?
 
-You substitution could look like: 
+Your substitution could look like: 
 
     --substitutions '-=_-_;,=_-_;:=_-_'
 

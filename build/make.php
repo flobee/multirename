@@ -215,8 +215,6 @@ try
             // for deployment of a new releases or updating the docs
             makePhar();
 
-
-
             makeReadmeMd();
             echo 'README.md created' . PHP_EOL;
 
