@@ -1,5 +1,9 @@
 # Changes of Multirename
 
+2015-08-01
+    - new Version: 1.2.4
+    - Fixes a fault in --find option when trying to find for several keywords
+ 
 2015-06-24
     - new Version: 1.2.3
     - Improves output messages in test mode
