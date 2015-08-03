@@ -48,7 +48,12 @@ for mybranch in master testing unstable
 do
     if [ "$mybranch" = "$1" ]; then
         echo '+------------------------------------------------------------------------------';
-        echo "| check externals, merge $mybranch";
+        echo "| Merge $mybranch now";
+
+        git merge $mybranch -m "gitmerge.sh $mybranch";
+        
+        echo '+------------------------------------------------------------------------------';
+        echo "| Checking externals, merge $mybranch";
 
         cmdline="branch=\"\$(git config --file \$toplevel/.gitmodules submodule.\$name.branch)\"; echo \"| merge external: \$name - $mybranch to \$branch\"; cd \"\$toplevel/\$name\"; git merge -m \"gitmerge.sh $mybranch \# to \$branch\" $mybranch;"
 
