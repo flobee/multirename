@@ -1,7 +1,6 @@
 # Bugs
 
-There are one or some and hopefully none! This is alpha version! After writing 
-the tests (done) some has been removed. 
+There are one or some and hopefully none!
 Be sure using the --test mode and check all results! Have a look at the output 
 when substitution or search keywards having special characters e.g: ? & ... 
 I think the pcre engine does not like it but i haven't checked it yet.

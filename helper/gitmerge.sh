@@ -37,6 +37,11 @@
 # submodules eg. library and so on.
 ###############################################################################
 
+if [ "" = "$1" ]; then
+    echo "# run: ./helper/gitmerge.sh [branch:[master|testing|unstable]ToMergeIntoTheCurrentOne]";
+    exit 1;
+fi
+
 dir=`pwd`;
 
 for mybranch in master testing unstable
