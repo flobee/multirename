@@ -50,10 +50,9 @@ do
         echo '+------------------------------------------------------------------------------';
         echo "| check externals, merge $mybranch";
 
-        cmdline="branch=\"\$(git config --file \$toplevel/.gitmodules submodule.\$name.branch)\"; echo \"| merge external: \$name - $mybranch to \$branch\"; cd \"\$toplevel/\$name\" && git merge -m \"gitmerge.sh $mybranch \# to \$branch\" \$mybranch;"
+        cmdline="branch=\"\$(git config --file \$toplevel/.gitmodules submodule.\$name.branch)\"; echo \"| merge external: \$name - $mybranch to \$branch\"; cd \"\$toplevel/\$name\"; git merge -m \"gitmerge.sh $mybranch \# to \$branch\" $mybranch;"
 
         git submodule foreach --recursive "$cmdline";
-
 
 #       git submodule foreach --recursive 'branch="$(git config --file $toplevel/.gitmodules \
 #           submodule.$name.branch)";\
