@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * ----------------------------------------------------------------------------
- * @version 0.1 Created 2015-04-06
+ * @version 1.0.0 Created 2015-04-06
  * ----------------------------------------------------------------------------
  */
 
@@ -34,8 +34,8 @@ $docs = array(
     'INSTALL.txt'   => 'externals/multirename.wiki/3_Installing-multirename.md',
     'USAGE.txt'     => 'externals/multirename.wiki/4_Usage-of-multirename.md',
     'CONTRIBUTE.txt'=> 'externals/multirename.wiki/5_Contributions.md',
-    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
     'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
+    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
     'BUGS.txt',
     'HISTORY.txt'
 );
@@ -215,8 +215,6 @@ try
             // for deployment of a new releases or updating the docs
             makePhar();
 
-
-
             makeReadmeMd();
             echo 'README.md created' . PHP_EOL;
 
@@ -247,7 +245,7 @@ Deployment tasks: Please read the CONTRIBUTE.txt informations
 Options:
     php make.php install
     php make.php clean
-    php make.php deploy [optional: releaseVersionID]
+    php make.php deploy [optional: VersionID to create a bundled tar file]
 
 
 EOTXT;

@@ -13,25 +13,31 @@
 # If you have /bin/dash then change the shebang if /bin/sh does not link to it.
 # Alternativly use /bin/ash
 #
-# run: ./helper/gitupdate.sh # or change paths/locations here
+# run: ./helper/gitupdate.sh [branch:master|testing|unstable]
 #
 # Checkout a branch of master|testing|unstable including updates and switching
 # to it and including the externals,
 # run: ./helper/gitupdate.sh [branchname]
 #
-# Important note: Staging areas "master" "testing" "unstable".
+# Important note: 
+# Staging areas are: "master" "testing" "unstable".
 # "master" should be always the latest stable release!
 # All new code/ development goes to unstable. Also, if needed to the externals.
 # If tests exists and the function of fixed bugs, new features is verified it
-# will be merged to "testing" (collecting versions, feature)... hte next release
+# will be merged to "testing" (collecting versions, feature)... the next release
 # candidate.
-# Hotfixes will go extra branches and will be merged directly to the "master"
+# Hotfixes will go to extra branches and will be merged directly to the "master"
 #
-# When merging branches take a look into .gitmodules of each! branch and verify
-# that the branches still map to the branch name of the master project.
+# When merging branches take a look into .gitmodules of _each_ branch and 
+# verify that the branches still map to the branch name of the master project.
 # E.g.: The branch testing of the project maps to the testing branch of the
 # submodules eg. library and so on.
 ###############################################################################
+
+if [ "" = "$1" ]; then
+    echo "# run: ./helper/gitupdate.sh [branch:master|testing|unstable]";
+    exit 1;
+fi
 
 for mybranch in master testing unstable
 do
@@ -75,7 +81,7 @@ fi
 
 echo '+------------------------------------------------------------------------------';
 echo '| switching branch of submodules if not already done (checks: .gitmodules)';
-git submodule foreach --recursive 'branch="$(git config -f $toplevel/.gitmodules \
+git submodule foreach --recursive 'branch="$(git config --file $toplevel/.gitmodules \
 submodule.$name.branch)";\
 echo "| checking $branch";\
 git checkout $branch;\
