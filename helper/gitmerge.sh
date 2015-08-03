@@ -51,11 +51,11 @@ do
         echo "| Merge $mybranch now";
 
         git merge $mybranch -m "gitmerge.sh $mybranch";
-        
+
         echo '+------------------------------------------------------------------------------';
         echo "| Checking externals, merge $mybranch";
 
-        cmdline="branch=\"\$(git config --file \$toplevel/.gitmodules submodule.\$name.branch)\"; echo \"| merge external: \$name - $mybranch to \$branch\"; cd \"\$toplevel/\$name\"; git merge -m \"gitmerge.sh $mybranch \# to \$branch\" $mybranch;"
+        cmdline="branch=\"\$(git config --file \$toplevel/.gitmodules submodule.\$name.branch)\"; echo \"| merge external: \$name - $mybranch to \$branch\"; cd \"\$toplevel/\$name\"; git merge -m \"gitmerge.sh \$toplevel/\$name $mybranch \# to \$branch\" $mybranch;"
 
         git submodule foreach --recursive "$cmdline";
 
