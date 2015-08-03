@@ -1,9 +1,9 @@
 [submodule "externals/mumsys-library"]
 	path = externals/mumsys-library
 	url = https://github.com/flobee/mumsys-library.git
-	branch = testing
+	branch = unstable
 [submodule "externals/multirename.wiki"]
 	path = externals/multirename.wiki
 	url = https://github.com/flobee/multirename.wiki.git
-	branch = testing
+	branch = unstable
 
