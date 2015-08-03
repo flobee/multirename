@@ -6,7 +6,7 @@ vendor/
 config/autoload/*.local.php
 
 # Binary gettext files
-*.mo
+# *.mo
 
 # Data
 data/logs/
@@ -15,9 +15,6 @@ data/sessions/
 data/tmp/
 temp/
 
-# Legacy ZF1
-demos/
-extras/documentation
 
 .gitmodules
 .status-branch-unstable
@@ -38,3 +35,4 @@ phpunit.log.xml
 #/build/multirename.phar
 #/build/multirename-*.phar
 logs/
+
