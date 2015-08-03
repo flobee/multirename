@@ -118,7 +118,7 @@ word "this" if it exists:
 
 ### Beautifing hyphen, comma and colon?
 
-You substitution could look like: 
+Your substitution could look like: 
 
     --substitutions '-=_-_;,=_-_;:=_-_'
 
@@ -251,8 +251,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.2.3.tgz?raw=true -O multirename-1.2.3.tgz
-    tar -xf multirename-1.2.3.tgz
+    -1.2.4.tgz?raw=true -O multirename-1.2.4.tgz
+    tar -xf multirename-1.2.4.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
@@ -366,7 +366,7 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-[docs/](/flobee/multirename/tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/master/docs/CONTRIBUTE.txt)
 
 
 # Usage of Multirename
@@ -377,7 +377,8 @@ more please have a look in the [contributions section](#contributions) or at the
 
 - Internally always the long options will be used. If you use short options, no 
 problem, but if you want to see the saved configuration the long options will be 
-shown and used.
+shown and used. Also as remark if you want to use the Mumsys_Multirename class 
+in php context e.g: in your own scripts this is the way.
 
 For the moment (may be for all the time):
 
