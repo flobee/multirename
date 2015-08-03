@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * ----------------------------------------------------------------------------
- * @version 0.1 Created 2015-04-06
+ * @version 1.0.0 Created 2015-04-06
  * ----------------------------------------------------------------------------
  */
 
@@ -215,8 +215,6 @@ try
             // for deployment of a new releases or updating the docs
             makePhar();
 
-
-
             makeReadmeMd();
             echo 'README.md created' . PHP_EOL;
 
@@ -247,7 +245,7 @@ Deployment tasks: Please read the CONTRIBUTE.txt informations
 Options:
     php make.php install
     php make.php clean
-    php make.php deploy [optional: releaseVersionID]
+    php make.php deploy [optional: VersionID to create a bundled tar file]
 
 
 EOTXT;

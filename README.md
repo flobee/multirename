@@ -45,11 +45,11 @@ latest version you will find at the "unstable" branch.
 - [Contributions](#contributions)
 	- [Contributors are welcome!](#contributors-are-welcome)
 	- [Deployment](#deployment)
-- [License](#license)
 - [Authors](#authors)
 	- [Contributed features](#contributed-features)
-- [Implemented suggestions](#implemented-suggestions)
+	- [Implemented suggestions](#implemented-suggestions)
 	- [Core developers](#core-developers)
+- [License](#license)
 - [Bugs](#bugs)
 - [History](#history)
 
@@ -251,8 +251,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.2.0.tgz?raw=true -O multirename-1.2.0.tgz
-    tar -xf multirename-1.2.0.tgz
+    -1.2.3.tgz?raw=true -O multirename-1.2.3.tgz
+    tar -xf multirename-1.2.3.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
@@ -592,6 +592,25 @@ but i have no other/better idea at the moment to handle it.
 
 
 
+# Authors
+
+## Contributed features
+
+<Developer>
+    <Feature Description>
+
+
+## Implemented suggestions
+
+<Name>
+    <Feature Description>
+
+
+## Core developers
+
+Florian Blasel
+
+
 # License
 
 
@@ -762,29 +781,9 @@ permanent authorization for you to choose that version for the
 Library.
 
 
-# Authors
-
-## Contributed features
-
-<Developer>
-    <Feature Description>
-
-
-# Implemented suggestions
-
-<Name>
-    <Feature Description>
-
-
-## Core developers
-
-Florian Blasel
-
-
 # Bugs
 
-There are one or some and hopefully none! This is alpha version! After writing 
-the tests (done) some has been removed. 
+There are one or some and hopefully none!
 Be sure using the --test mode and check all results! Have a look at the output 
 when substitution or search keywards having special characters e.g: ? & ... 
 I think the pcre engine does not like it but i haven't checked it yet.

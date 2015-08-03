@@ -1,7 +1,37 @@
 # Changes of Multirename
 
+2015-08-01
+    - new Version: 1.2.4
+    - Fixes a fault in --find option when trying to find for several keywords
+ 
+2015-06-24
+    - new Version: 1.2.3
+    - Improves output messages in test mode
+    - Adds --find option
+    - Improves crap index of run() method 
+    - Adds method _substitution()
+    - Improves/ Updates tests
+
 2015-05-24
     Fixes handling of shell arguments in library; Fixes issue #1;
     Set VERSION 1.2.1
 
 
+
+# Timeline
+
+- alpha version:
+- Code freeze:                                                  2015-03/04
+    - write and push existig tests first
+    - find bugs and fix them
+
+- announce first pre release,                                   2015-04-22/23
+    - create preRelease branch/tag and make default branch
+
+- bug hunting time. ask the people                              2015-05-16
+
+- release (master)                                              2015-05-16
+    - init staging areas:
+        - add testing and unstable branches
+    - new features :-)
+- Stable version: 1.2.0 as release 1                            2015-05-21
