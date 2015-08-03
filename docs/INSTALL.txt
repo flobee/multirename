@@ -97,7 +97,7 @@ This shows you how to create your own multirename.phar file or building a new
 release.
 
 
-## Options
+## Build options
 
 1. php make.php install
 2. php make.php clean
@@ -147,6 +147,6 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-[docs/](/flobee/multirename/tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/master/docs/CONTRIBUTE.txt)
 
 

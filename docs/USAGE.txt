@@ -6,7 +6,8 @@
 
 - Internally always the long options will be used. If you use short options, no 
 problem, but if you want to see the saved configuration the long options will be 
-shown and used.
+shown and used. Also as remark if you want to use the Mumsys_Multirename class 
+in php context e.g: in your own scripts this is the way.
 
 For the moment (may be for all the time):
 
@@ -28,7 +29,7 @@ can loose informations for recovery/ undo action. Have look at the log file
 first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
 
 
-## Options
+## Usage options
 
     --test|-t
         Flag: Test before execute. You should use it as many as possible befor 

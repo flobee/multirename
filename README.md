@@ -37,19 +37,21 @@ latest version you will find at the "unstable" branch.
 	- [Developer install](#developer-install)
 	- [The program comes in two flavors](#the-program-comes-in-two-flavors)
 - [Build](#build)
-	- [Options](#options)
+	- [Build options](#build-options)
 - [Usage of Multirename](#usage-of-multirename)
 	- [Forword](#forword)
 	- [Hints](#hints)
-	- [Options](#options)
+	- [Usage options](#usage-options)
 - [Contributions](#contributions)
 	- [Contributors are welcome!](#contributors-are-welcome)
 	- [Deployment](#deployment)
-- [License](#license)
 - [Authors](#authors)
+	- [Contributed features](#contributed-features)
+	- [Implemented suggestions](#implemented-suggestions)
 	- [Core developers](#core-developers)
+- [License](#license)
 - [Bugs](#bugs)
-- [About / History](#about-history)
+- [History](#history)
 
 
 
@@ -116,7 +118,7 @@ word "this" if it exists:
 
 ### Beautifing hyphen, comma and colon?
 
-You substitution could look like: 
+Your substitution could look like: 
 
     --substitutions '-=_-_;,=_-_;:=_-_'
 
@@ -249,8 +251,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.2.0.tgz?raw=true -O multirename-1.2.0.tgz
-    tar -xf multirename-1.2.0.tgz
+    -1.2.4.tgz?raw=true -O multirename-1.2.4.tgz
+    tar -xf multirename-1.2.4.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
@@ -314,7 +316,7 @@ This shows you how to create your own multirename.phar file or building a new
 release.
 
 
-## Options
+## Build options
 
 1. php make.php install
 2. php make.php clean
@@ -364,7 +366,7 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-[docs/](/flobee/multirename/tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/master/docs/CONTRIBUTE.txt)
 
 
 # Usage of Multirename
@@ -375,7 +377,8 @@ more please have a look in the [contributions section](#contributions) or at the
 
 - Internally always the long options will be used. If you use short options, no 
 problem, but if you want to see the saved configuration the long options will be 
-shown and used.
+shown and used. Also as remark if you want to use the Mumsys_Multirename class 
+in php context e.g: in your own scripts this is the way.
 
 For the moment (may be for all the time):
 
@@ -397,7 +400,7 @@ can loose informations for recovery/ undo action. Have look at the log file
 first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
 
 
-## Options
+## Usage options
 
     --test|-t
         Flag: Test before execute. You should use it as many as possible befor 
@@ -590,6 +593,25 @@ but i have no other/better idea at the moment to handle it.
 
 
 
+# Authors
+
+## Contributed features
+
+<Developer>
+    <Feature Description>
+
+
+## Implemented suggestions
+
+<Name>
+    <Feature Description>
+
+
+## Core developers
+
+Florian Blasel
+
+
 # License
 
 
@@ -760,17 +782,9 @@ permanent authorization for you to choose that version for the
 Library.
 
 
-# Authors
-
-## Core developers
-
-Florian Blasel
-
-
 # Bugs
 
-There are one or some and hopefully none! This is alpha version! After writing 
-the tests (done) some has been removed. 
+There are one or some and hopefully none!
 Be sure using the --test mode and check all results! Have a look at the output 
 when substitution or search keywards having special characters e.g: ? & ... 
 I think the pcre engine does not like it but i haven't checked it yet.
@@ -778,14 +792,14 @@ I think the pcre engine does not like it but i haven't checked it yet.
 Your help would be great to find bugs or add features and improvements.
 
 
-# About / History
+# History
 
-The program is made for users which have not that detailed knowlege using the
+Multirename is made for users which have not that detailed knowlege using the
 shell. Also me :-) but i know php and find my solution to help myself for a
 solution to rename files like i need it. Multirename was born.
-Nothing new! And maybe already done anywhere in any rename program. 
-Maybe some of my ideas will find useful, finds a new home ... Hopfully it will 
-stay here :-)
+Nothing new! And maybe already done anywhere in any rename program.
+Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
+will stay here :-)
 The very beginning of this program was in ~2002 and now, again because of music
 and video files the vdr (video disk recording) project gave me the idea to
 finish this program including some features i was looking for.

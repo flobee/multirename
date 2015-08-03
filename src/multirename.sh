@@ -20,8 +20,8 @@
 
 
 # Helper script. 
-# On some systems open_basedir restrictions take affect. Eg. on synology 
-# storages or systems without root access.
+# On some systems open_basedir restrictions take affect. Eg. on synology
+# systems or systems without root access.
 # In cli mode you can work around like this:
 
 php -d open_basedir=Off multirename.php $*
