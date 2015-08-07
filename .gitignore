@@ -25,6 +25,7 @@ svn/*
 /.settings
 /.project
 /.buildpath
+/.gitmodules
 /nbproject
 phpunit.log.xml
 
