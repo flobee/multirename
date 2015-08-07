@@ -251,8 +251,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.2.4.tgz?raw=true -O multirename-1.2.4.tgz
-    tar -xf multirename-1.2.4.tgz
+    -1.2.5.tgz?raw=true -O multirename-1.2.5.tgz
+    tar -xf multirename-1.2.5.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
