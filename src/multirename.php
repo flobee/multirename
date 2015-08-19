@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * ----------------------------------------------------------------------------
- * @version 1.2.0
+ * @version 1.2.1
  * Created 28.02.2015
  * ----------------------------------------------------------------------------
  */
@@ -114,13 +114,12 @@ try {
             PHP_EOL . $opts->getHelp() .PHP_EOL;
         $logger->log($message, 5);
     } else {
-        $oFiles = new Mumsys_FileSystem();
-
         if (isset($config['help'])) {
             $logger->log('Usage:' . PHP_EOL . $opts->getHelp(), 6);
         } elseif (isset($config['version'])) {
             Mumsys_Multirename::showVersion();
         } else {
+            $oFiles = new Mumsys_FileSystem();
             $oMultirename = new Mumsys_Multirename($config, $oFiles, $logger);
         }
     }
