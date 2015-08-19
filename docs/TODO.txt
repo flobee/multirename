@@ -1,7 +1,18 @@
 # TODOs for Multirename
 
 ## Reported issues
-- [ ] #2 global substitutions as prefix or suffix to current substitutions?
+- [00%] #2 global substitutions as prefix or suffix to current substitutions?
+
+- [10%] #3 Incomplete tests for _getRelevantFiles() when run the program with or 
+           without the --find option
+
+- [30%] #4 Extend the history
+            1. prepare for multiple undo's (collecting)
+            2. Implement feature for multiple undo's
+                - drop used history item?
+            3. detection of already removed files..
+            what to do then? how to report? if target file exists (keep copy or
+            replace? in batch?) ?
 
 
 # New Features
@@ -26,11 +37,10 @@
 
 - [ ] scan for fileextensions given by a regex? without extension?
 
-- [ ] extend history, multiple undo's, detection of already removed files.. 
-      what to do then? how to report? if target file exists (keep copy or 
-      replace? in batch?) ?
-
 - [ ] extend rename function to substitute the hole filename including extension
+
+- [ ] extend rename function to apply filter functions (befor and after) like:
+      UPPER, lower, ucfirst, ucword
 
 
 @todo windows? cygwin: yes must work. most of the lib was created on it in that 
