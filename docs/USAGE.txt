@@ -32,7 +32,7 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 ## Usage options (--help)
 
     --test|-t
-    Flag: test before execute
+        Flag: test before execute
 
     --path|-p <yourValue/s>
         Path to scann for files (tailing slash is important!) * Required
@@ -44,34 +44,35 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
     --substitutions|-s <yourValue/s>
         Semicolon separated list with key value pairs for substitution eg:
         --substitutions ä=ae;ö=oe;ß=ss; =_;'regex:/^(\d{5})$/i=x_\$1'... .As
-        simple feature you can use %path1%...%pathN% parameters to substitute path
-        informations in substitution values the file belongs to. For moreinformation
-        see --sub-paths but only use --sub-paths if you really need it. It can
-        became strange side effects when enabling it. * Required
+        simple feature you can use %path1%...%pathN% parameters to substitute
+        path informations in substitution values the file belongs to. For
+        moreinformation see --sub-paths but only use --sub-paths if you really
+        need it. It can became strange side effects when enabling it. * Required
 
     --sub-paths
         Flag; Enable substitution for paths. Feature for the substitution:
-        Breadcrumbs of the --path can be found/ substituted with %path1% - %pathN%
-        in reverse. If you want to rename files and want to add the folder the file
-        belongs to you can use %path1%. One folder above is %path2% and so on until
-        the given root in --path. Example: /var/files/records => %path1% = records,
-        %path2% = files, %path3% = var; With this option you can also replace
-        %pathN% in keys or values and also in regular expressionsUse the --test flag
-        and test and check the results carefully! WARNING: Enabling this feature can
-        change the behavior of existing substitutions  in your cmd line!
+        Breadcrumbs of the --path can be found/ substituted with %path1% -
+        %pathN%  in reverse. If you want to rename files and want to add the
+        folder the file belongs to you can use %path1%. One folder above is
+        %path2% and so on until the given root in --path. Example:
+        /var/files/records => %path1% = records, %path2% = files, %path3% = var;
+        With this option you can also replace %pathN% in keys or values and also
+        in regular expressionsUse the --test flag and test and check the results
+        carefully! WARNING: Enabling this feature can change the behavior of
+        existing substitutions  in your cmd line!
 
     --find|-f <yourValue/s>
         Find files. Semicolon seperated list of search keywords or regular
         expressions (starting with "regex:"). The list will be handled in OR
-        conditons.The keyword checks for matches in any string of the file location
-        (path and filename). Optional
+        conditons.The keyword checks for matches in any string of the file
+        location (path and filename). Optional
 
     --exclude <yourValue/s>
-        Exclude files. Semicolon seperated list of search keywords or regular 
-        expressions (starting with "regex:"). The list will be handled in OR 
-        conditons.The keyword checks for matches in any string of the file 
-        location (path and filename). Exclude  will also ignore matches from the
-        --find option; Optional
+        Exclude files. Semicolon seperated list of search keywords or regular
+        expressions (starting with "regex:"). The list will be handled in OR
+        conditons.The keyword will be checked for matches in any string of the
+        file location (path and filename). Exclude will also ignore matches from
+        the --find option; Optional
 
     --recursive|-r
         Flag, if set read all files under each directory starting from --path
@@ -85,13 +86,13 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
     --link <yourValue/s>
         Don't rename, create symlinks or hardlinks, relativ or absolut to target
-        (Values: soft|hard[;rel|abs]). If the second parameter is not given relativ
-        links will be created
+        (Values: soft|hard[;rel|abs]). If the second parameter is not given
+        relativ links will be created
 
     --linkway <yourValue/s>
-        Type of the link to be created relative or absolut: ("rel"|"abs"), default:
-        "rel". This will be used internally if you use --link soft;rel the linkway
-        will be extracted from that line
+        Type of the link to be created relative or absolut: ("rel"|"abs"),
+        default: "rel". This will be used internally if you use --link soft;rel
+        the linkway will be extracted from that line
 
     --history|-h
         Flag; If set this will enable the history/ for the moment ONLY the last
@@ -99,16 +100,16 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
     --history-size <yourValue/s>
         Integer; Number of history entrys if --history is enabled; Default: 10;
-        Note: If you run on much more than hundreds of files you may set the memory
-        limit to a higher value and/or reduce this number to 1. This feature may
-        consume much memory. Using the --test mode with loglevel 6 or higher will
-        give you informations about the memory usage.
+        Note: If you run on much more than hundreds of files you may set the
+        memory limit to a higher value and/or reduce this number to 1. This
+        feature may consume much memory. Using the --test mode with loglevel 6
+        or higher will give you informations about the memory usage.
 
     --batch
-        Flag; Not implemented yet. Run the job recusiv from given --path as start
-        directory and start renaming. If a new configuration in the sub directories
-        exists is trys to load the configuration for batch-mode and execute it. This
-        enables --recursiv and --history
+        Flag; Not implemented yet. Run the job recusiv from given --path as
+        start directory and start renaming. If a new configuration in the sub
+        directories exists is trys to load the configuration for batch-mode and
+        execute it. This enables --recursiv and --history
 
     --undo
         Flag; Revers/ undo the last action
@@ -117,26 +118,26 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Read saved configuration from given path and execute it
 
     --set-config
-        Flag; Sets, replaces existing, and saves the parameters to a config file in
-        the given path which adds a new folder ".multirename" for later use with
-        --from-config
+        Flag; Sets, replaces existing, and saves the parameters to a config file
+        in the given path which adds a new folder ".multirename" for later use
+        with --from-config
 
     --del-config
         Flag; Deletes the config from given --path
 
     --show-config
-        Flag; Shows the config parameter from a saved config to check or rebuild it.
-        Use it with --from-config
+        Flag; Shows the config parameter from a saved config to check or rebuild
+        it. Use it with --from-config
 
     --loglevel|--ll <yourValue/s>
-        Logging level for the output of messages (0=Emerg ... 7=verbose/debug). For
-        testing use 6 or 7; For cronjob etc. do not use lower than 5 to get
+        Logging level for the output of messages (0=Emerg ... 7=verbose/debug).
+        For testing use 6 or 7; For cronjob etc. do not use lower than 5 to get
         important messages
 
     --version|-v
         Flag; Return version informations
 
-    --help|-h
+    --help
         Show this help
 
 
