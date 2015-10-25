@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * ----------------------------------------------------------------------------
- * @version 1.0.0 Created 2015-04-06
+ * @version 1.1.0 Created 2015-04-06
  * ----------------------------------------------------------------------------
  */
 
@@ -89,6 +89,52 @@ function makePhar()
 }
 
 
+function updUsageFile($keyword='## Usage options (--help)') {
+    // task: scann file and replase all after "## Usage options" with multirename --help
+
+    $newUsage = '';
+
+    $file = './docs/' . 'USAGE.txt';
+
+    $lines = file($file);
+    foreach ($lines as $key => $line) {
+        if ($line === $keyword.PHP_EOL) {
+            $newUsage .= $keyword . PHP_EOL;
+            break;
+        }
+
+        $newUsage .= $line;
+    }
+    $newUsage .= PHP_EOL;
+
+
+    $list = Mumsys_Multirename::getSetup(true);
+    $list['--help'] = 'Show this help';
+    $wrap = 72;
+    $indentOption = '    ';
+    $indentComment = "        ";
+    foreach($list as $option => $desc)
+    {
+        $needvalue = strpos($option, ':');
+        $option = str_replace(':', '', $option);
+
+        if ($needvalue) {
+            $option .= ' <yourValue/s>';
+        }
+
+        if ($desc) {
+            $desc = $indentComment . wordwrap($desc, $wrap, PHP_EOL . $indentComment);
+        }
+
+        $newUsage .= $indentOption . $option . PHP_EOL
+            . $desc . '' . PHP_EOL . PHP_EOL;
+    }
+    $newUsage .= PHP_EOL . PHP_EOL;
+
+    file_put_contents($file, $newUsage);
+}
+
+
 /**
  * creates the README.md file for github
  */
@@ -108,11 +154,15 @@ function makeReadmeMd()
             $doc = $wiki;
         }
 
+        $docUsage = false;
+
         $lines = file('./docs/' . $doc);
 
-        foreach ($lines as $line) {
+        foreach ($lines as $line)
+        {
             $content .= $line;
 
+            // build summary list
             if ($line !== "# Summary\n" && preg_match('/^(#|##)?( \w)+/i', $line, $matches))
             {
                 $prefix = strstr($line, ' ', true);
@@ -134,6 +184,7 @@ function makeReadmeMd()
                 // the docs have *nix ending
                 $summary[] = $prefix . ' [' . $line . '](#' . $linkLine . ')' . "\n";
             }
+
         }
     }
 
@@ -199,6 +250,7 @@ try
 
 
 ';
+
             }
 
             break;
@@ -214,6 +266,9 @@ try
         case 'deploy':
             // for deployment of a new releases or updating the docs
             makePhar();
+
+            updUsageFile('## Usage options (--help)');
+            echo 'USAGE.txt updated' . PHP_EOL;
 
             makeReadmeMd();
             echo 'README.md created' . PHP_EOL;
