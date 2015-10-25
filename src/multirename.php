@@ -31,7 +31,7 @@ error_reporting(-1);
 ini_set('display_errors', true);
 ignore_user_abort(false);
 
-ini_set('max_execution_time', 30);
+ini_set('max_execution_time', 0);
 ini_set('memory_limit', '8M');
 date_default_timezone_set('Europe/Berlin');
 
