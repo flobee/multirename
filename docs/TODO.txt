@@ -3,16 +3,20 @@
 ## Reported issues
 - [00%] #2 global substitutions as prefix or suffix to current substitutions?
 
-- [10%] #3 Incomplete tests for _getRelevantFiles() when run the program with or 
+- [99%] #3 Incomplete tests for _getRelevantFiles() when run the program with or
            without the --find option
 
 - [30%] #4 Extend the history
-            1. prepare for multiple undo's (collecting)
+            1. prepare for multiple undo's (collecting) [100%]
             2. Implement feature for multiple undo's
-                - drop used history item?
+                - drop used history item? yes! implemented "history-size"[100%]
+                - select a process to undo
             3. detection of already removed files..
             what to do then? how to report? if target file exists (keep copy or
             replace? in batch?) ?
+
+- [ ] #5 Like the --find option we need an --exclude option to hide from current
+      substitution!
 
 
 # New Features
