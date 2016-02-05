@@ -1,6 +1,6 @@
 # Multirename
 
-### multirename - A shell program written in PHP
+### multirename - A shell program written in PHP >= 5.4 - 7.*.*
 
 This program is made to use as shell program and also for batch processing. 
 This means: If you have tonns of files to be renamed or have always new files 
