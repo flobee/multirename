@@ -1,5 +1,12 @@
 # Changes of Multirename
 
+2016-03-27
+    - Improves history handling
+    - Sets logger property to be private
+    - new version: 1.3.3
+    - Update/ improves tests
+    - codecoverage 100%
+
 2015-10-25
     - Adds --exclude option, Updates tests, fixes issue #5
     - version 1.3.1
