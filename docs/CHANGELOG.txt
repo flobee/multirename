@@ -1,5 +1,19 @@
 # Changes of Multirename
 
+2016-03-10
+    Mumsys_Multirename
+    - Improves handling of stored config files
+        A config can contain selveral sub configs e.g: one config for this file 
+        extension and one config for that file extension and so on.
+        there is no config management at the moment. add some config or delete 
+        the config file is currently supported. The thing at all: this config 
+        will be called from now on (next version) the default "preset" and it 
+        containts one of more configs.
+    - Update/ improves tests
+    - codecoverage 100%
+    - bugfix with --find option; fixes issue #3
+    - add -exclude option; fixes feature #5
+
 2016-03-27
     - Improves history handling
     - Sets logger property to be private

@@ -4,7 +4,7 @@
 
 - [00%] #2 global substitutions as prefix or suffix to current substitutions?
 
-- [30%] #4 Extend the history
+- [40%] #4 Extend the history
             1. prepare for multiple undo's (collecting) [100%]
             2. Implement feature for multiple undo's
                 - drop used history item? yes! implemented "history-size"[100%]
@@ -13,15 +13,21 @@
             what to do then? how to report? if target file exists (keep copy or
             replace? in batch?) ?
 
-- [x] #3 Incomplete tests for _getRelevantFiles() when run the program with or
-         without the --find option -> in version 1.3.0
-- [x] #5 Like the --find option we need an --exclude option to hide from current
-         substitution!  -> in version 1.3.1
 
+## General
 
-# New Features
+- [34%] cleanup code: eg: substitution in a new methode, testmode in a new 
+        methode eg (tbc.): actionTest(), actionRename()
 
-## this is the creative zone
+- [50%] improve the (test)output. limit messages e.g.: 'DONE'
+
+## history
+
+- [10%] extend history, multiple undo's, detection of already removed files.. 
+      what to do then? how to report? if target file exists (keep copy or 
+      replace? in batch?) ?
+
+## config and presets
 
 - [ ] Config files centalized or where it happens?
       where it happens:
@@ -30,29 +36,32 @@
           no config share (can be help-/useful eg in: /var/)
       - good 
           to look directly in the config file where the action belongs to
-- [ ] using presets? individual names for a config incl. date informations
-- [ ] extend config, usage of different config setups/presets
+
+- [30%] using presets? individual names for a config incl. date informations
+
+- [30%] extend config, usage of different config setups/presets
       --> presets in the local storage with --preset option? yes, sounds good!
+      --preset only if not the default: "_" value
 
-- [ ] rename list of given (existing|nonexisting?) files or output shell args 
-      or a list of from->to?
+- [00%] rename list of given (existing|nonexisting?) files or output shell args 
+        or a list of from->to?
 
-- [ ] rename list of given files in a text file
+## new features
 
-- [ ] scan for fileextensions given by a regex? without extension?
+- [00%] rename list of given files in a text file
 
-- [ ] extend rename function to substitute the hole filename including extension
+- [00%] scan for fileextensions given by a regex? without extension?
 
-- [ ] extend rename function to apply filter functions (befor and after) like:
-      UPPER, lower, ucfirst, ucword
+- [00%] extend rename function to substitute the hole filename including
+        extension
 
+- [00%] rename directories
 
-@todo windows? cygwin: yes must work. most of the lib was created on it in that 
-    time :-) but nativ support with c:\php.exe multirename.php ?
-    how to link/symlink, how to hidden files
+- [00%] extend rename function to apply filter functions (befor and after) like:
+        UPPER, lower, ucfirst, ucword
 
-- [ ] improve the (test)output. limit messages e.g.: 'DONE'
+ -[00%] @todo windows? cygwin: yes 
+        nativ support with c:\php.exe multirename.php ?
+        how to link/symlink, hidden files?
 
-- [33%] cleanup code: eg: substitution in a new methode, testmode in a new methode 
-      eg: actionTest(), actionRename()
 
