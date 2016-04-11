@@ -55,7 +55,7 @@ latest version you will find at the "unstable" branch.
 - [History](#history)
 	- [Important version history informations](#important-version-history-informations)
 - [Changes of Multirename](#changes-of-multirename)
-- [Timeline](#timeline)
+	- [Timeline](#timeline)
 - [Bugs](#bugs)
 - [License](#license)
 
@@ -540,17 +540,17 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
 ## Contributors are welcome!
 
-Checkout a branch of master|testing|unstable including updates and switching
+Checkout a branch of stable|testing|unstable including updates and switching
 to one of it and including the externals with updates, use the helper script:
 
     ./helper/gitupdate.sh [branchname]
 
-I decide to use staging areas to keep the "master" clean of bugs as good as 
+I decide to use staging areas to keep the "stable" clean of bugs as good as 
 possible and for maximum of stability.
 
-Staging areas are "unstable" -> "testing" -> "master"
+Staging areas are "unstable" -> "testing" -> "stable"
 
-"master" should be always the latest stable release! (Incl. Hotfixes)
+"stable" should be always the latest stable release! (Incl. Hotfixes)
 
 All new code/ development shoud go to "unstable". 
 Also, if needed, to the externals which having also these staging areas.
@@ -573,7 +573,7 @@ If tests exists and the function of fixed bugs, new features is verified it will
 be merged to "testing" (collecting the updates, versions, features)... for the 
 next release candidate or sub releases.
 
-Hotfixes will go to extra branches and will be merged directly to the "master".
+Hotfixes will go to extra branches and will be merged directly to the "stable".
 
 When merging branches take a look into .gitmodules of _each_ branch and verify
 that the branches still map to the branch name of the master project.
@@ -584,7 +584,7 @@ workflow:
 
     # checkout given branch of the main project
     # init, updates and pulls the submodules for the given branch
-    ./helper/gitupdate.sh [unstable|testing|master]
+    ./helper/gitupdate.sh [unstable|testing|stable]
 
     # After a merge, e.g.:
     ./helper/gitupdate.sh testing
@@ -716,7 +716,7 @@ e.g: multirename --from-config /path --save-config
 
 
 
-# Timeline
+## Timeline
 
 - alpha version:
 - Code freeze:                                                  2015-03/04
