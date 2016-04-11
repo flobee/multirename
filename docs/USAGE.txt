@@ -111,6 +111,13 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         directories exists is trys to load the configuration for batch-mode and
         execute it. This enables --recursiv and --history
 
+    --plugins
+        Not implemented yet. Semicolon separated list of plugins to use. Plugins
+        to use to do the renameing: eg.: You have a text file including the new
+        name of the file to be renameed: The pluging gets the file location and
+        you return the new filename befor or after the other rules take affect!
+        Example: --plugins 'TitleOfVDRInfoFile:before;CutAdvertising:after'
+
     --undo
         Flag; Revers/ undo the last action
 
@@ -118,9 +125,11 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Read saved configuration from given path and execute it
 
     --set-config
-        Flag; Sets, replaces existing, and saves the parameters to a config file
-        in the given path which adds a new folder ".multirename" for later use
-        with --from-config
+        disabled; see --save-config
+
+    --save-config
+        Flag; Saves the configuration to the --path of the config which adds a
+        new folder ".multirename" for later use with --from-config
 
     --del-config
         Flag; Deletes the config from given --path

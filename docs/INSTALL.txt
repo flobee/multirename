@@ -45,8 +45,8 @@ Checkout the code and required library:
 
     git clone https://github.com/flobee/multirename.git
     cd multirename/
-    # checkout and update master|testing|unstable
-    sh ./helper/gitupdate.sh [optional: master|testing|unstable]
+    # checkout and update stable|testing|unstable
+    sh ./helper/gitupdate.sh [optional: stable|testing|unstable]
     
 
 The files you will call directly (if not already done):
@@ -147,6 +147,6 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-docs/](./tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/stable/docs/CONTRIBUTE.txt)
 
 
