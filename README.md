@@ -1,6 +1,8 @@
-# Multirename
+# Multirename 
 
-### multirename - A shell program written in PHP
+## multirename - A shell program written in PHP
+
+### Version 1.4.1
 
 This program is made to use as shell program and also for batch processing. 
 This means: If you have tonns of files to be renamed or have always new files 
@@ -16,8 +18,8 @@ Florian
 
 
 Notice: Auto generated file. All documentation was bundled in the README.md.
-For single text files have a look at the [docs](/flobee/multirename/tree/master/docs))
-Versions: The documentation at the wiki belongs to the master branch / latest
+For single text files have a look at the [docs](/flobee/multirename/tree/stable/docs))
+Versions: The documentation at the wiki belongs to the stable branch / latest
 stable release. This documentation belongs to the branch you switch to. The
 latest version you will find at the "unstable" branch.
 
@@ -25,6 +27,7 @@ latest version you will find at the "unstable" branch.
 # Summary
 
 - [Multirename](#multirename)
+	- [multirename - A shell program written in PHP](#multirename-a-shell-program-written-in-php)
 - [Features](#features)
 - [Examples for Multirename](#examples-for-multirename)
 	- [Simple replacements/ substitutions:](#simple-replacements-substitutions)
@@ -49,10 +52,12 @@ latest version you will find at the "unstable" branch.
 	- [Contributed features](#contributed-features)
 	- [Implemented suggestions](#implemented-suggestions)
 	- [Core developers](#core-developers)
-- [License](#license)
-- [Bugs](#bugs)
 - [History](#history)
 	- [Important version history informations](#important-version-history-informations)
+- [Changes of Multirename](#changes-of-multirename)
+- [Timeline](#timeline)
+- [Bugs](#bugs)
+- [License](#license)
 
 
 
@@ -631,6 +636,113 @@ but i have no other/better idea at the moment to handle it.
 Florian Blasel
 
 
+# History
+
+Multirename is made for users which have not that detailed knowlege using the
+shell. Also me :-) but i know php and find my solution to help myself for a
+solution to rename files like i need it. Multirename was born.
+Nothing new! And maybe already done anywhere in any rename program.
+
+Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
+will stay here :-)
+The very beginning of this program was in ~2002 and now, again because of music
+and video files the vdr (video disk recording) project gave me the idea to
+finish this program including some features i was looking for.
+
+
+## Important version history informations
+
+### VERSION < 1.3.3 
+If you are updating to a newer version of multirename and your version is lower 
+than version 1.3.3 you need to update your existing configs. Beginning with 
+Version 2.0.0 the migration will be removed.
+When executing some renaming please update the configs to the new structure by 
+using the --save-config flag. 
+e.g: multirename --from-config /path --save-config
+# Changes of Multirename
+
+2016-04-10
+    Mumsys_Multirename
+    - Improves handling of stored config files
+        A config can contain selveral sub configs e.g: one config for this file 
+        extension and one config for that file extension and so on.
+        there is no config management at the moment. add some config or delete 
+        the config file is currently supported. The thing at all: this config 
+        will be called from now on (next version) the default "preset" and it 
+        containts one of more configs.
+    - Update/ improves tests
+    - codecoverage 100%
+    - bugfix with --find option; fixes issue #3
+    - add --exclude option; fixes feature #5
+    - Version 1.4.1
+
+2016-03-27
+    - Improves history handling
+    - Sets logger property to be private
+    - new version: 1.3.3
+    - Update/ improves tests
+    - codecoverage 100%
+
+2015-10-25
+    - Adds --exclude option, Updates tests, fixes issue #5
+    - version 1.3.1
+
+2015-08-09
+    - new Version: 1.3.0
+    - adds history tracking and "history-size" option
+    - Fixed incomplete bugfix in version 1.2.5 of _getRelevantFiles()
+    - Adds missing tests for the bugfix in 1.2.4, 1.2.5
+    - Updates/ improves inline/ php docs
+
+2015-08-06
+    - new Version: 1.2.5
+    - Fixed incomplete bugfix in version 1.2.4
+
+2015-08-01
+    - new Version: 1.2.4
+    - Fixes a fault in --find option when trying to find for several keywords
+ 
+2015-06-24
+    - new Version: 1.2.3
+    - Improves output messages in test mode
+    - Adds --find option
+    - Improves crap index of run() method 
+    - Adds method _substitution()
+    - Improves/ Updates tests
+
+2015-05-24
+    Fixes handling of shell arguments in library; Fixes issue #1;
+    Set VERSION 1.2.1
+
+
+
+# Timeline
+
+- alpha version:
+- Code freeze:                                                  2015-03/04
+    - write and push existig tests first
+    - find bugs and fix them
+
+- announce first pre release,                                   2015-04-22/23
+    - create preRelease branch/tag and make default branch
+
+- bug hunting time. ask the people                              2015-05-16
+
+- release (master)                                              2015-05-16
+    - init staging areas:
+        - add testing and unstable branches
+    - new features :-)
+- Stable version: 1.2.0 as release 1                            2015-05-21
+# Bugs
+
+There are one or some and hopefully none!
+Be sure using the --test mode and check all results! Have a look at the output 
+when substitution or search keywards having special characters e.g: ? & ... 
+I think the pcre engine does not like it but i haven't checked it yet.
+
+Your help would be great to find bugs or add features and improvements.
+
+
 # License
 
 
@@ -801,36 +913,3 @@ permanent authorization for you to choose that version for the
 Library.
 
 
-# Bugs
-
-There are one or some and hopefully none!
-Be sure using the --test mode and check all results! Have a look at the output 
-when substitution or search keywards having special characters e.g: ? & ... 
-I think the pcre engine does not like it but i haven't checked it yet.
-
-Your help would be great to find bugs or add features and improvements.
-
-
-# History
-
-Multirename is made for users which have not that detailed knowlege using the
-shell. Also me :-) but i know php and find my solution to help myself for a
-solution to rename files like i need it. Multirename was born.
-Nothing new! And maybe already done anywhere in any rename program.
-
-Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
-will stay here :-)
-The very beginning of this program was in ~2002 and now, again because of music
-and video files the vdr (video disk recording) project gave me the idea to
-finish this program including some features i was looking for.
-
-
-## Important version history informations
-
-### VERSION < 1.3.3 
-If you are updating to a newer version of multirename and your version is lower 
-than version 1.3.3 you need to update your existing configs. Beginning with 
-Version 2.0.0 the migration will be removed.
-When executing some renaming please update the configs to the new structure by 
-using the --save-config flag. 
-e.g: multirename --from-config /path --save-config

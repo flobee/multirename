@@ -1,6 +1,8 @@
-# Multirename
+# Multirename 
 
-### multirename - A shell program written in PHP
+## multirename - A shell program written in PHP
+
+### Version ##VERSIONSTRING##
 
 This program is made to use as shell program and also for batch processing. 
 This means: If you have tonns of files to be renamed or have always new files 
@@ -16,8 +18,8 @@ Florian
 
 
 Notice: Auto generated file. All documentation was bundled in the README.md.
-For single text files have a look at the [docs](/flobee/multirename/tree/master/docs))
-Versions: The documentation at the wiki belongs to the master branch / latest
+For single text files have a look at the [docs](/flobee/multirename/tree/stable/docs))
+Versions: The documentation at the wiki belongs to the stable branch / latest
 stable release. This documentation belongs to the branch you switch to. The
 latest version you will find at the "unstable" branch.
 
