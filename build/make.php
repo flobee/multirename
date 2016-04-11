@@ -35,9 +35,10 @@ $docs = array(
     'USAGE.txt'     => 'externals/multirename.wiki/4_Usage-of-multirename.md',
     'CONTRIBUTE.txt'=> 'externals/multirename.wiki/5_Contributions.md',
     'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
-    'LICENSE.txt'   => 'externals/multirename.wiki/7_License-for-multirename.md',
+    'HISTORY.txt'   => 'externals/multirename.wiki/7_History-of-multirename.md',
+    'CHANGELOG.txt' => 'externals/multirename.wiki/8_Changelog-of-multirename.md',
     'BUGS.txt',
-    'HISTORY.txt'
+    'LICENSE.txt'   => 'externals/multirename.wiki/9_License-for-multirename.md',
 );
 
 
