@@ -1,6 +1,6 @@
 # Multirename
 
-### multirename - A shell program written in PHP >= 5.4 - 7.*
+### multirename - A shell program written in PHP
 
 This program is made to use as shell program and also for batch processing. 
 This means: If you have tonns of files to be renamed or have always new files 
@@ -52,6 +52,7 @@ latest version you will find at the "unstable" branch.
 - [License](#license)
 - [Bugs](#bugs)
 - [History](#history)
+	- [Important version history informations](#important-version-history-informations)
 
 
 
@@ -83,7 +84,8 @@ latest version you will find at the "unstable" branch.
 -   Creation of hard links or symlinks, relative or absolut instead of renaming
     the files. Including relocating in this case. "this" goes "../in/here/that"
 
--   Possibility to undo an action.
+-   Possibility to undo an action. < version 1.3.3
+-   Possibility to undo multiple or seletced actions from history > version 2.*
 
 -   A test mode to check the results when starting a rename process.
 
@@ -92,7 +94,14 @@ latest version you will find at the "unstable" branch.
 
 -   Scan for matches in a recusivly way or just files in the given directory.
 
+-   Scan for matches including search function also able to use regular expr.
+
+-   Excluding matches you dont want to rename
+
 -   Scan for all files or a given list of file extensions. E.g.: doc;docx;xls
+
+-   Using external scripts as plugins to assist the renaming befor or after the 
+    internal renaming performs. E.g. loading a new name from a text file.
 
 -   More features to come. Some are already in the code marked as TODO.
 
@@ -251,8 +260,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.3.1.tgz?raw=true -O multirename-1.3.1.tgz
-    tar -xf multirename-1.3.1.tgz
+    -1.4.1.tgz?raw=true -O multirename-1.4.1.tgz
+    tar -xf multirename-1.4.1.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
@@ -264,8 +273,8 @@ Checkout the code and required library:
 
     git clone https://github.com/flobee/multirename.git
     cd multirename/
-    # checkout and update master|testing|unstable
-    sh ./helper/gitupdate.sh [optional: master|testing|unstable]
+    # checkout and update stable|testing|unstable
+    sh ./helper/gitupdate.sh [optional: stable|testing|unstable]
     
 
 The files you will call directly (if not already done):
@@ -366,7 +375,7 @@ Drops files created within the make script
 
 Task for a new release of multirename or just updating the documentation. For 
 more please have a look in the [contributions section](#contributions) or at the
-docs/](./tree/master/docs/CONTRIBUTE.txt)
+docs/](./tree/stable/docs/CONTRIBUTE.txt)
 
 
 # Usage of Multirename
@@ -482,6 +491,13 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         directories exists is trys to load the configuration for batch-mode and
         execute it. This enables --recursiv and --history
 
+    --plugins
+        Not implemented yet. Semicolon separated list of plugins to use. Plugins
+        to use to do the renameing: eg.: You have a text file including the new
+        name of the file to be renameed: The pluging gets the file location and
+        you return the new filename befor or after the other rules take affect!
+        Example: --plugins 'TitleOfVDRInfoFile:before;CutAdvertising:after'
+
     --undo
         Flag; Revers/ undo the last action
 
@@ -489,9 +505,11 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Read saved configuration from given path and execute it
 
     --set-config
-        Flag; Sets, replaces existing, and saves the parameters to a config file
-        in the given path which adds a new folder ".multirename" for later use
-        with --from-config
+        disabled; see --save-config
+
+    --save-config
+        Flag; Saves the configuration to the --path of the config which adds a
+        new folder ".multirename" for later use with --from-config
 
     --del-config
         Flag; Deletes the config from given --path
@@ -799,6 +817,7 @@ Multirename is made for users which have not that detailed knowlege using the
 shell. Also me :-) but i know php and find my solution to help myself for a
 solution to rename files like i need it. Multirename was born.
 Nothing new! And maybe already done anywhere in any rename program.
+
 Maybe some of my ideas you will find useful or finds a new home ... Hopfully it 
 will stay here :-)
 The very beginning of this program was in ~2002 and now, again because of music
@@ -806,3 +825,12 @@ and video files the vdr (video disk recording) project gave me the idea to
 finish this program including some features i was looking for.
 
 
+## Important version history informations
+
+### VERSION < 1.3.3 
+If you are updating to a newer version of multirename and your version is lower 
+than version 1.3.3 you need to update your existing configs. Beginning with 
+Version 2.0.0 the migration will be removed.
+When executing some renaming please update the configs to the new structure by 
+using the --save-config flag. 
+e.g: multirename --from-config /path --save-config
