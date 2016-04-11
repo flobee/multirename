@@ -1,6 +1,6 @@
 # Changes of Multirename
 
-2016-03-10
+2016-04-10
     Mumsys_Multirename
     - Improves handling of stored config files
         A config can contain selveral sub configs e.g: one config for this file 
@@ -12,7 +12,8 @@
     - Update/ improves tests
     - codecoverage 100%
     - bugfix with --find option; fixes issue #3
-    - add -exclude option; fixes feature #5
+    - add --exclude option; fixes feature #5
+    - Version 1.4.1
 
 2016-03-27
     - Improves history handling
