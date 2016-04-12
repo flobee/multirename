@@ -45,9 +45,9 @@ $docs = array(
 /**
  * Creates the multirename.phar file
  */
-function makePhar()
+function makePhar($version='0.0.0')
 {
-    $phar = new Phar("build/multirename.phar", FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, "multirename.phar");
+    $phar = new Phar("deploy/multirename-" . $version . ".phar", FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, "multirename.phar");
 
     $phar->startBuffering();
 
@@ -56,7 +56,6 @@ function makePhar()
     exec('php -w build/stub.php > build/stub.php.min');
     $phar->setStub("#!/usr/bin/env php\n" . file_get_contents('build/stub.php.min') );
     //$phar->setStub( $stub );
-
 
     $libFiles = array(
         'Mumsys_Abstract',
@@ -91,7 +90,7 @@ function makePhar()
 
 
 function updUsageFile($keyword='## Usage options (--help)') {
-    // task: scann file and replase all after "## Usage options" with multirename --help
+    // task: scann file and replace all after "## Usage options" with multirename --help
 
     $newUsage = '';
 
@@ -239,14 +238,14 @@ try
                 echo 'build/multirename.phar not found. Creation failed!
                 ';
             } else {
-                echo 'If you dont see any errors... multirename.phar was created successfully
+                echo 'If you dont see any errors... multirename-'.$version.'.phar was created successfully
 
 #### test it:
-# chmod +x build/multirename.phar
-# ./build/multirename.phar --help
+# chmod +x deploy/multirename-'.$version.'.phar
+# ./deploy/multirename-'.$version.'.phar --help
 #
 ### make globaly available
-# mv build/multirename.phar /usr/local/bin/multirename
+# mv build/multirename-'.$version.'.phar /usr/local/bin/multirename
 # multirename --help
 
 
@@ -258,15 +257,15 @@ try
 
         case 'clean':
             @unlink('build/stub.php.min');
-            @unlink('build/multirename.phar');
-            @unlink('build/multirename-'.$version.'.phar');
+            @unlink('deploy/multirename.phar');
+            @unlink('deploy/multirename-'.$version.'.phar');
             echo 'clean complete' . PHP_EOL;
 
             break;
 
         case 'deploy':
             // for deployment of a new releases or updating the docs
-            makePhar();
+            makePhar($version);
 
             updUsageFile('## Usage options (--help)');
             echo 'USAGE.txt updated' . PHP_EOL;
