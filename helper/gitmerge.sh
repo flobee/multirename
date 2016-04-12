@@ -13,23 +13,23 @@
 ###############################################################################
 #
 # Helper to merge required externals having the same staging areas: unstable,
-# testing and master
+# testing and stable
 #
 #
 # run: ./helper/gitmerge.sh [branchToMergeIntoTheCurrentOne]
 #
-# Checkout a branch of master|testing|unstable including updates and switching
+# Checkout a branch of stable|testing|unstable including updates and switching
 # to it and including the externals,
 # run: ./helper/gitupdate.sh [branchname]
 #
 # Important note:
-# Staging areas are: "master" "testing" "unstable".
-# "master" should be always the latest stable release!
+# Staging areas are: "stable" "testing" "unstable".
+# "stable" should be always the latest stable release!
 # All new code/ development goes to unstable. Also, if needed to the externals.
 # If tests exists and the function of fixed bugs, new features is verified it
 # will be merged to "testing" (collecting versions, feature)... the next release
 # candidate.
-# Hotfixes will go to extra branches and will be merged directly to the "master"
+# Hotfixes will go to extra branches and will be merged directly to the "stable"
 #
 # When merging branches take a look into .gitmodules of _each_ branch and
 # verify that the branches still map to the branch name of the master project.
@@ -38,13 +38,13 @@
 ###############################################################################
 
 if [ "" = "$1" ]; then
-    echo "# run: ./helper/gitmerge.sh [branch:[master|testing|unstable]ToMergeIntoTheCurrentOne]";
+    echo "# run: ./helper/gitmerge.sh [branch:[stable|testing|unstable]ToMergeIntoTheCurrentOne]";
     exit 1;
 fi
 
 dir=`pwd`;
 
-for mybranch in master testing unstable
+for mybranch in master stable testing unstable
 do
     if [ "$mybranch" = "$1" ]; then
         echo '+------------------------------------------------------------------------------';
