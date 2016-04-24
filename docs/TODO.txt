@@ -13,7 +13,6 @@
             what to do then? how to report? if target file exists (keep copy or
             replace? in batch?) ?
 
-
 ## General
 
 - [34%] cleanup code: eg: substitution in a new methode, testmode in a new 
@@ -28,14 +27,6 @@
       replace? in batch?) ?
 
 ## config and presets
-
-- [ ] Config files centalized or where it happens?
-      where it happens:
-      - bad 
-          on multi-user systems: file permission problems (eg. shared folders)
-          no config share (can be help-/useful eg in: /var/)
-      - good 
-          to look directly in the config file where the action belongs to
 
 - [30%] using presets? individual names for a config incl. date informations
 
@@ -65,3 +56,13 @@
         how to link/symlink, hidden files?
 
 
+# Done
+
+ - [99%] Where it happens!
+      Config files centalized or where it happens?
+      where it happens:
+      - bad 
+          on multi-user systems: file permission problems (eg. shared folders)
+          no config share (can be help-/useful eg in: /var/)
+      - good 
+          to look directly in the config file where the action belongs to
