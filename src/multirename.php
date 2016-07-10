@@ -8,7 +8,7 @@
  * @copyright (c) 2015 by Florian Blasel
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * ----------------------------------------------------------------------------
- * @version 1.4.1
+ * @version 1.4.2
  * Created 28.02.2015
  */
 
@@ -28,7 +28,7 @@ ini_set('display_errors', true);
 ignore_user_abort(false);
 
 ini_set('max_execution_time', 0);
-ini_set('memory_limit', '8M');
+ini_set('memory_limit', '32M');
 date_default_timezone_set('Europe/Berlin');
 
 // --- bootstrap for Mumsys library -------------------------------------------
