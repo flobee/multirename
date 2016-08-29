@@ -117,4 +117,23 @@ Would do e.g.:
     new: Merlin_-_2014-08-16_1410.ts
 
 
+### Example 3
+
+Wallpapers? I love Wallpapers and they are great in debian/ubuntu!
+In your own path? It works but you can not save the
+setting if you are not root (let it be to be root) for the future.
+
+Scan for all wallpapers and symlink them to your target path.
+Change in the last line: <YOUR-USERNAME> and <PICTURE-PATH>
+Don't forget to remove the test flag to execute!
+
+    multirename --test 
+        --path /usr/share/wallpapers 
+        --fileextensions 'png;jpg' 
+        --recursive 
+        --sub-paths 
+        --link "soft;rel" 
+        --substitutions "regex:/(1920x(.*))/i=../../../../../../home/<YOUR-USERNAME>/<PICTURE-PATH>/wallpapers/%path3%"
+
+
 
