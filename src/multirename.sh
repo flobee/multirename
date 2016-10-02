@@ -1,15 +1,12 @@
 #!/bin/sh
 
 # /*{{{*/
-# -----------------------------------------------------------------------------
 # Multirename
 # for MUMSYS Library for Multi User Management System
 # -----------------------------------------------------------------------------
-# @author Florian Blasel <flobee.code@gmail.com>
-# -----------------------------------------------------------------------------
-# @copyright (c) 2015 by Florian Blasel
-# -----------------------------------------------------------------------------
 # @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
+# @copyright (c) 2015 by Florian Blasel
+# @author Florian Blasel <flobee.code@gmail.com>
 # -----------------------------------------------------------------------------
 # @category    Mumsys
 # @package     Mumsys_Library
