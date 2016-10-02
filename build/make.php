@@ -47,7 +47,11 @@ $docs = array(
  */
 function makePhar($version='0.0.0')
 {
-    $phar = new Phar("deploy/multirename-" . $version . ".phar", FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, "multirename.phar");
+    $phar = new Phar(
+        "deploy/multirename-" . $version . ".phar", 
+        FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, 
+        "multirename.phar"
+    );
 
     $phar->startBuffering();
 
@@ -232,10 +236,10 @@ try
     switch (@$_SERVER['argv'][1])
     {
         case 'install':
-            makePhar();
+            makePhar($version);
 
-            if (!file_exists('build/multirename.phar')) {
-                echo 'build/multirename.phar not found. Creation failed!
+            if (!file_exists('deploy/multirename-' . $version . '.phar')) {
+                echo 'deploy/multirename.phar not found. Creation failed!
                 ';
             } else {
                 echo 'If you dont see any errors... multirename-'.$version.'.phar was created successfully
