@@ -57,10 +57,10 @@ echo '+-------------------------------------------------------------------------
 echo '| update base program';
 git pull --all;
 
-if [ ! -d externals/mumsys-library ]; then
+if [ ! -d externals/mumsys-library-default ]; then
     echo '+------------------------------------------------------------------------------';
-    echo '| adds core library as submodule in "externals/mumsys-library"';
-    git submodule add https://github.com/flobee/mumsys-library.git externals/mumsys-library
+    echo '| adds core library as submodule in "externals/mumsys-library-default"';
+    git submodule add https://github.com/flobee/mumsys-library-default.git externals/mumsys-library-default
 fi
 
 if [ ! -d externals/multirename.wiki ]; then
@@ -69,7 +69,7 @@ if [ ! -d externals/multirename.wiki ]; then
     git submodule add https://github.com/flobee/multirename.wiki.git externals/multirename.wiki
 fi
 
-if [ ! -f externals/mumsys-library/.git ]; then
+if [ ! -f externals/mumsys-library-default/.git ]; then
     echo '+------------------------------------------------------------------------------';
     echo '| init submodules';
     git submodule update --init --recursive;
