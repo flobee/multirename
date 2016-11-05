@@ -8,7 +8,7 @@
  * @copyright (c) 2015 by Florian Blasel
  * @author Florian Blasel <flobee.code@gmail.com>
  * ----------------------------------------------------------------------------
- * @version 1.4.2
+ * @version 1.4.3
  * Created 28.02.2015
  */
 
@@ -55,7 +55,7 @@ $logOptions = array(
     'msgReturn' => false,
     'maxfilesize' => 1024000 * 3,
 );
-$logger = new Mumsys_Logger($logOptions);
+$logger = new Mumsys_Logger_Default($logOptions);
 
 
 // --- pipe uncachable errors to the logger -----------------------------------
