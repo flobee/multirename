@@ -19,7 +19,7 @@
   */
 
 
-$pathLibrary = 'library/mumsys/'; // tailing slash!
+$pathLibrary = __DIR__ . '/library/mumsys/'; // tailing slash!
 $pathLogfile = '/tmp/';
 
 // --- misc -------------------------------------------------------------------
