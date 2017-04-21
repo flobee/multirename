@@ -86,12 +86,12 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
     --link <yourValue/s>
         Don't rename, create symlinks or hardlinks, relativ or absolut to target
-        (Values: soft|hard[;rel|abs]). If the second parameter is not given
+        (Values: soft|hard[:rel|abs]). If the second parameter is not given
         relativ links will be created
 
     --linkway <yourValue/s>
         Type of the link to be created relative or absolut: ("rel"|"abs"),
-        default: "rel". This will be used internally if you use --link soft;rel
+        default: "rel". This will be used internally if you use --link soft:rel
         the linkway will be extracted from that line
 
     --history|-h

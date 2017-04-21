@@ -54,9 +54,10 @@ $logOptions = array(
     'msgEcho' => true,
     'msgReturn' => false,
     'maxfilesize' => 1024000 * 3,
+    'msgColors' => false,
 );
-$logger = new Mumsys_Logger_Default($logOptions);
-
+$fileLogger = new Mumsys_Logger_File($logOptions);
+$logger = new Mumsys_Logger_Decorator_Messages($fileLogger, $logOptions);
 
 // --- pipe uncachable errors to the logger -----------------------------------
 function myExceptionHandler($ex)

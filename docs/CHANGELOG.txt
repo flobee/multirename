@@ -1,7 +1,14 @@
 # Changes of Multirename
 
+2017-04-21
+    - Bufix handling --link, --linkway
+    - Updates start script to use Logger decorator for messages
+    - Version 1.4.3
+
+2016-11-05
+    - Updates start script to use Mumsys_Logger_Default
+
 2016-04-10
-    Mumsys_Multirename
     - Improves handling of stored config files
         A config can contain selveral sub configs e.g: one config for this file 
         extension and one config for that file extension and so on.
