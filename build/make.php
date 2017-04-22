@@ -3,7 +3,7 @@
 
 /**
  * Make for Multirename
- * 
+ *
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * @copyright (c) 2015 by Florian Blasel
  * @author Florian Blasel <flobee.code@gmail.com>
@@ -82,6 +82,7 @@ function makePhar($version='0.0.0')
         'Mumsys_Logger_File',
         'Mumsys_GetOpts_Exception',
         'Mumsys_GetOpts',
+        'Mumsys_FileSystem_Interface',
         'Mumsys_FileSystem_Exception',
         'Mumsys_FileSystem_Common_Abstract',
         'Mumsys_FileSystem',
