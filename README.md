@@ -2,7 +2,7 @@
 
 ## multirename - A shell program written in PHP
 
-### Version 1.4.1
+### Version 1.4.3
 
 This program is made to use as shell program and also for batch processing. 
 This means: If you have tonns of files to be renamed or have always new files 
@@ -201,7 +201,7 @@ words for german television i dont want to have.:
         --sub-paths \
         --test
 
-Would do e.g. (in real i just create relative symlinks --link 'soft;rel' and 
+Would do e.g. (in real i just create relative symlinks --link 'soft:rel' and 
 don't rename the files!):
 
     old: 00001.ts ...TO:
@@ -228,6 +228,25 @@ Would do e.g.:
 
     old: 2014-08-16_1410_RTL2_Merlin.ts
     new: Merlin_-_2014-08-16_1410.ts
+
+
+### Example 3
+
+Wallpapers? I love Wallpapers and they are great in debian/ubuntu!
+In your own path? It works but you can not save the
+setting if you are not root (let it be to be root) for the future.
+
+Scan for all wallpapers and symlink them to your target path.
+Change in the last line: <YOUR-USERNAME> and <PICTURE-PATH>
+Don't forget to remove the test flag to execute!
+
+    multirename --test 
+        --path /usr/share/wallpapers 
+        --fileextensions 'png;jpg' 
+        --recursive 
+        --sub-paths 
+        --link "soft:rel" 
+        --substitutions "regex:/(1920x(.*))/i=../../../../../../home/<YOUR-USERNAME>/<PICTURE-PATH>/wallpapers/%path3%"
 
 
 
@@ -265,8 +284,8 @@ Please use cygwin (http://cygwin.com). Native support will be in the future)
     (copy & past)
     cd /tmp
     wget https://github.com/flobee/multirename/blob/testing/deploy/multirename\
-    -1.4.1.tgz?raw=true -O multirename-1.4.1.tgz
-    tar -xf multirename-1.4.1.tgz
+    -1.4.3.tgz?raw=true -O multirename-1.4.3.tgz
+    tar -xf multirename-1.4.3.tgz
     chmod +x multirename.phar
     mv multirename.phar /usr/local/bin/multirename
     multirename --help
@@ -471,7 +490,7 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
     --link <yourValue/s>
         Don't rename, create symlinks or hardlinks, relativ or absolut to target
-        (Values: soft|hard[;rel|abs]). If the second parameter is not given
+        (Values: soft|hard[:rel|abs]). If the second parameter is not given
         relativ links will be created
 
     --linkway <yourValue/s>
@@ -497,11 +516,11 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         execute it. This enables --recursiv and --history
 
     --plugins
-        Not implemented yet. Semicolon separated list of plugins to use. Plugins
-        to use to do the renameing: eg.: You have a text file including the new
-        name of the file to be renameed: The pluging gets the file location and
-        you return the new filename befor or after the other rules take affect!
-        Example: --plugins 'TitleOfVDRInfoFile:before;CutAdvertising:after'
+        Not implemented yet. Semicolon separated list of plugins to include.
+        Plugins to assist youfor the renaming. Eg.: You have a text file
+        including the new name of the file, or parts of it: The pluging gets the
+        content and uses it befor or after the other rules take affect! Example:
+        --plugins 'GetTheTitleFromVDRsInfoFile:before;CutAdvertising:after'
 
     --undo
         Flag; Revers/ undo the last action
@@ -527,6 +546,9 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Logging level for the output of messages (0=Emerg ... 7=verbose/debug).
         For testing use 6 or 7; For cronjob etc. do not use lower than 5 to get
         important messages
+
+    --stats
+        Print some stats after execution
 
     --version|-v
         Flag; Return version informations
@@ -661,8 +683,15 @@ using the --save-config flag.
 e.g: multirename --from-config /path --save-config
 # Changes of Multirename
 
+2017-04-21
+    - Bufix handling --link, --linkway
+    - Updates start script to use Logger decorator for messages
+    - Version 1.4.3
+
+2016-11-05
+    - Updates start script to use Mumsys_Logger_Default
+
 2016-04-10
-    Mumsys_Multirename
     - Improves handling of stored config files
         A config can contain selveral sub configs e.g: one config for this file 
         extension and one config for that file extension and so on.
@@ -737,7 +766,7 @@ e.g: multirename --from-config /path --save-config
 
 There are one or some and hopefully none!
 Be sure using the --test mode and check all results! Have a look at the output 
-when substitution or search keywards having special characters e.g: ? & ... 
+when substitution or search keywords having special characters e.g: ? & ... 
 I think the pcre engine does not like it but i haven't checked it yet.
 
 Your help would be great to find bugs or add features and improvements.
