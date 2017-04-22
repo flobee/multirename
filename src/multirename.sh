@@ -9,8 +9,8 @@
 # @author Florian Blasel <flobee.code@gmail.com>
 # -----------------------------------------------------------------------------
 # @category    Mumsys
-# @package     Mumsys_Library
-# @subpackage  Mumsys_Multirename
+# @package     Library
+# @subpackage  Multirename
 # @version     1.0.0
 # Created on 2015-04-08
 # /*}}}*/
@@ -22,4 +22,3 @@
 # In cli mode you may can work around like this:
 
 php -d open_basedir=Off multirename.php $*
-

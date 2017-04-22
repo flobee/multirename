@@ -8,6 +8,9 @@
  * @copyright (c) 2015 by Florian Blasel
  * @author Florian Blasel <flobee.code@gmail.com>
  * ----------------------------------------------------------------------------
+ * @category    Mumsys
+ * @package     Library
+ * @subpackage  Multirename
  * @version 1.4.3
  * Created 28.02.2015
  */
