@@ -2,30 +2,32 @@
 <?php
 
 /**
- * ----------------------------------------------------------------------------
  * Make for Multirename
- * ----------------------------------------------------------------------------
- * @author Florian Blasel <flobee.code@gmail.com>
- * ----------------------------------------------------------------------------
- * @copyright (c) 2015 by Florian Blasel
- * ----------------------------------------------------------------------------
+ * 
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
- * ----------------------------------------------------------------------------
+ * @copyright (c) 2015 by Florian Blasel
+ * @author Florian Blasel <flobee.code@gmail.com>
+ *
  * @version 1.1.0 Created 2015-04-06
- * ----------------------------------------------------------------------------
  */
 
 // cd to project root
 $dirCurrent = getcwd();
-chdir(dirname(__FILE__) . '/../');
+chdir(__DIR__ . '/../');
 $newRelease = false;
 
-ini_set('include_path', 'externals/mumsys-library/src/');
-require_once('externals/mumsys-library/src/Mumsys_Loader.php');
+
+ini_set('include_path', 'src/library/mumsys/');
+require_once('Mumsys_Loader.php');
 spl_autoload_extensions( '.php' );
 spl_autoload_register( array( 'Mumsys_Loader', 'autoload'));
-// relevant docs for wiki and readme.md
-// Array value contains the location of the wiki file name
+
+
+/**
+ * relevant docs for wiki and readme.md ONLY for the stable/master branch at github or
+ * for local, individual installations or bundles
+ * Array value contains the location of the wiki file name
+ */
 $docs = array(
     'README.txt' => 'externals/multirename.wiki/Home.md',
     // 'SUMMARY.txt', // content to be generated where the "# Summary" tag is
@@ -37,7 +39,7 @@ $docs = array(
     'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
     'HISTORY.txt'   => 'externals/multirename.wiki/7_History-of-multirename.md',
     'CHANGELOG.txt' => 'externals/multirename.wiki/8_Changelog-of-multirename.md',
-    'BUGS.txt',
+    'BUGS.txt' => 'externals/multirename.wiki/8_1_Bugs-of-multirename.md',
     'LICENSE.txt'   => 'externals/multirename.wiki/9_License-for-multirename.md',
 );
 
@@ -48,8 +50,8 @@ $docs = array(
 function makePhar($version='0.0.0')
 {
     $phar = new Phar(
-        "deploy/multirename-" . $version . ".phar", 
-        FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, 
+        "deploy/multirename-" . $version . ".phar",
+        FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME,
         "multirename.phar"
     );
 
@@ -66,12 +68,18 @@ function makePhar($version='0.0.0')
         'Mumsys_Exception',
         'Mumsys_Loader_Exception',
         'Mumsys_Loader',
+        'Mumsys_Php_Globals',
         'Mumsys_File_Exception',
         'Mumsys_File_Interface',
         'Mumsys_File',
-        'Mumsys_Logger_Exception',
+        'Mumsys_Logger_Writer_Interface',
+        'Mumsys_Logger_Decorator_Interface',
+        'Mumsys_Logger_Decorator_Abstract',
+        'Mumsys_Logger_Decorator_Messages',
         'Mumsys_Logger_Interface',
-        'Mumsys_Logger',
+        'Mumsys_Logger_Exception',
+        'Mumsys_Logger_Abstract',
+        'Mumsys_Logger_File',
         'Mumsys_GetOpts_Exception',
         'Mumsys_GetOpts',
         'Mumsys_FileSystem_Exception',
@@ -84,7 +92,7 @@ function makePhar($version='0.0.0')
     $phar->addFile('src/multirename.php', 'multirename.php');
 
     foreach ($libFiles as $class) {
-        $phar->addFile('externals/mumsys-library/src/' . $class . '.php', 'library/mumsys/' . $class . '.php');
+        $phar->addFile('src/library/mumsys/' . $class . '.php', 'library/mumsys/' . $class . '.php');
     }
 
     $phar->stopBuffering();
@@ -225,7 +233,7 @@ function mkWikiMd()
 
 try
 {
-    require_once 'externals/mumsys-library/src/Mumsys_Multirename.php';
+    require_once 'Mumsys_Multirename.php';
     echo 'Make file for ' . Mumsys_Multirename::getVersion() . PHP_EOL . PHP_EOL;
     $version = Mumsys_Multirename::VERSION;
     $testRelease = trim(@$_SERVER['argv'][2]);
@@ -239,7 +247,7 @@ try
             makePhar($version);
 
             if (!file_exists('deploy/multirename-' . $version . '.phar')) {
-                echo 'deploy/multirename.phar not found. Creation failed!
+                echo 'deploy/multirename-'.$version.'.phar not found. Creation failed!
                 ';
             } else {
                 echo 'If you dont see any errors... multirename-'.$version.'.phar was created successfully
@@ -312,7 +320,8 @@ EOTXT;
     }
 
 } catch (Exception $e) {
-    echo $e->getTraceAsString();
+    echo $e->getMessage() . PHP_EOL;
+    echo $e->getTraceAsString() . PHP_EOL;
     exit(1);
 }
 
