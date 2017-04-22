@@ -22,7 +22,7 @@
   */
 
 
-$pathLibrary = __DIR__ . '/library/mumsys/'; // tailing slash!
+$pathLibrary = __DIR__ . '/library/mumsys';
 $pathLogfile = '/tmp/';
 
 // --- misc -------------------------------------------------------------------
@@ -35,7 +35,7 @@ ini_set('memory_limit', '32M');
 date_default_timezone_set('Europe/Berlin');
 
 // --- bootstrap for Mumsys library -------------------------------------------
-require_once( $pathLibrary . 'Mumsys_Loader.php');
+require_once( $pathLibrary . '/Mumsys_Loader.php');
 spl_autoload_extensions('.php');
 spl_autoload_register(array('Mumsys_Loader', 'autoload'));
 
