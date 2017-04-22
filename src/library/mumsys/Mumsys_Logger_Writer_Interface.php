@@ -1,0 +1,1 @@
+../../../externals/mumsys-library-default/src/Mumsys_Logger_Writer_Interface.php
