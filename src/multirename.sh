@@ -22,3 +22,4 @@
 # In cli mode you may can work around like this:
 
 php -d open_basedir=Off multirename.php $*
+
