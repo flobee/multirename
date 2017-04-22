@@ -38,7 +38,7 @@ $docs = array(
     'CONTRIBUTE.txt'=> 'externals/multirename.wiki/5_Contributions.md',
     'AUTHORS.txt'   => 'externals/multirename.wiki/6_Contribution_Authors.md',
     'HISTORY.txt'   => 'externals/multirename.wiki/7_History-of-multirename.md',
-    'CHANGELOG.txt' => 'externals/multirename.wiki/8_Changelog-of-multirename.md',
+    'CHANGELOG.txt' => 'externals/multirename.wiki/8_0_Changelog-of-multirename.md',
     'BUGS.txt' => 'externals/multirename.wiki/8_1_Bugs-of-multirename.md',
     'LICENSE.txt'   => 'externals/multirename.wiki/9_License-for-multirename.md',
 );
