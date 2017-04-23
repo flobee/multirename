@@ -86,7 +86,7 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
 
     --link <yourValue/s>
         Don't rename, create symlinks or hardlinks, relativ or absolut to target
-        (Values: soft|hard[;rel|abs]). If the second parameter is not given
+        (Values: soft|hard[:rel|abs]). If the second parameter is not given
         relativ links will be created
 
     --linkway <yourValue/s>
@@ -112,11 +112,11 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         execute it. This enables --recursiv and --history
 
     --plugins
-        Not implemented yet. Semicolon separated list of plugins to use. Plugins
-        to use to do the renameing: eg.: You have a text file including the new
-        name of the file to be renameed: The pluging gets the file location and
-        you return the new filename befor or after the other rules take affect!
-        Example: --plugins 'TitleOfVDRInfoFile:before;CutAdvertising:after'
+        Not implemented yet. Semicolon separated list of plugins to include.
+        Plugins to assist youfor the renaming. Eg.: You have a text file
+        including the new name of the file, or parts of it: The pluging gets the
+        content and uses it befor or after the other rules take affect! Example:
+        --plugins 'GetTheTitleFromVDRsInfoFile:before;CutAdvertising:after'
 
     --undo
         Flag; Revers/ undo the last action
@@ -142,6 +142,9 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Logging level for the output of messages (0=Emerg ... 7=verbose/debug).
         For testing use 6 or 7; For cronjob etc. do not use lower than 5 to get
         important messages
+
+    --stats
+        Print some stats after execution
 
     --version|-v
         Flag; Return version informations

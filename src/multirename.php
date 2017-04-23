@@ -8,6 +8,9 @@
  * @copyright (c) 2015 by Florian Blasel
  * @author Florian Blasel <flobee.code@gmail.com>
  * ----------------------------------------------------------------------------
+ * @category    Mumsys
+ * @package     Library
+ * @subpackage  Multirename
  * @version 1.4.3
  * Created 28.02.2015
  */
@@ -19,7 +22,7 @@
   */
 
 
-$pathLibrary = __DIR__ . '/library/mumsys/'; // tailing slash!
+$pathLibrary = __DIR__ . '/library/mumsys';
 $pathLogfile = '/tmp/';
 
 // --- misc -------------------------------------------------------------------
@@ -32,7 +35,7 @@ ini_set('memory_limit', '32M');
 date_default_timezone_set('Europe/Berlin');
 
 // --- bootstrap for Mumsys library -------------------------------------------
-require_once( $pathLibrary . 'Mumsys_Loader.php');
+require_once( $pathLibrary . '/Mumsys_Loader.php');
 spl_autoload_extensions('.php');
 spl_autoload_register(array('Mumsys_Loader', 'autoload'));
 
@@ -54,9 +57,10 @@ $logOptions = array(
     'msgEcho' => true,
     'msgReturn' => false,
     'maxfilesize' => 1024000 * 3,
+    'msgColors' => false,
 );
-$logger = new Mumsys_Logger_Default($logOptions);
-
+$fileLogger = new Mumsys_Logger_File($logOptions);
+$logger = new Mumsys_Logger_Decorator_Messages($fileLogger, $logOptions);
 
 // --- pipe uncachable errors to the logger -----------------------------------
 function myExceptionHandler($ex)

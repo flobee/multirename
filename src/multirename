@@ -11,8 +11,8 @@
  * @author Florian Blasel <flobee.code@gmail.com>
  * ----------------------------------------------------------------------------
  * @category    Mumsys
- * @package     Mumsys_Library
- * @subpackage  Mumsys_Multirename
+ * @package     Library
+ * @subpackage  Multirename
  * @see         multirename.php
  * Created on 2015-04-08
  */
