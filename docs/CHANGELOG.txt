@@ -1,7 +1,9 @@
 # Changes of Multirename
 
+2016-11-05
+    - Updates start script to use Mumsys_Logger_Default
+
 2016-04-10
-    Mumsys_Multirename
     - Improves handling of stored config files
         A config can contain selveral sub configs e.g: one config for this file 
         extension and one config for that file extension and so on.
