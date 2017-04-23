@@ -3,7 +3,7 @@
 	url = https://github.com/flobee/mumsys-library-default.git
 	branch = unstable
 
-[submodule "externals/mumsys-library"]
+[submodule "externals/mumsys-library-default"]
     path = externals/mumsys-library
     url = https://github.com/flobee/mumsys-library-default.git
     branch = unstable
