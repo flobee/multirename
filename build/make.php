@@ -290,10 +290,10 @@ try
             echo 'Wiki files created' . PHP_EOL;
 
             if ($newRelease) {
-                rename('build/multirename.phar', 'build/multirename-'.$version.'.phar');
+                // rename('build/multirename.phar', 'build/multirename-'.$version.'.phar');
 
                 $cmd = 'tar -czf deploy/multirename-'.$version.'.tgz '
-                    . 'build/multirename-'.$version.'.phar '
+                    . 'deploy/multirename-'.$version.'.phar '
                     . 'docs/LICENSE.txt '
                     . 'README.md'
                     ;

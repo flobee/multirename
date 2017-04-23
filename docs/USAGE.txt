@@ -50,9 +50,9 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         need it. It can became strange side effects when enabling it. * Required
 
     --sub-paths
-        Flag; Enable substitution for paths. Feature for the substitution:
+        Flag; Enable substitution using paths. Feature for the substitution:
         Breadcrumbs of the --path can be found/ substituted with %path1% -
-        %pathN%  in reverse. If you want to rename files and want to add the
+        %pathN% in reverse. If you want to rename files and want to add the
         folder the file belongs to you can use %path1%. One folder above is
         %path2% and so on until the given root in --path. Example:
         /var/files/records => %path1% = records, %path2% = files, %path3% = var;
@@ -95,8 +95,8 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         the linkway will be extracted from that line
 
     --history|-h
-        Flag; If set this will enable the history/ for the moment ONLY the last
-        action log with the option to undo it
+        Flag; If set this will enable the history and tracks all actions for a
+        later undo
 
     --history-size <yourValue/s>
         Integer; Number of history entrys if --history is enabled; Default: 10;

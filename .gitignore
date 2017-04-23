@@ -33,8 +33,6 @@ phpunit.log.xml
 /docs/API/*
 /tests/testfiles/*
 /build/stub.php.min
-#/build/multirename.phar
-#/build/multirename-*.phar
-deploy/multirename-*.phar
+deploy/multirename-*
 logs/
 
