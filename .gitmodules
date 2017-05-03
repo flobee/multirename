@@ -4,6 +4,7 @@
     branch = unstable
 
 [submodule "externals/multirename.wiki"]
-	path = externals/multirename.wiki
-	url = https://github.com/multirename/multirename.wiki.git
-	branch = unstable
+    path = externals/multirename.wiki
+    url = https://github.com/multirename/multirename.wiki.git
+    branch = unstable
+
