@@ -21,4 +21,4 @@
 /**
  * Wrapper for multirename using the shebang to call it from the shell
  */
-require_once 'multirename.php';
+require_once __DIR__ . 'multirename.php';
