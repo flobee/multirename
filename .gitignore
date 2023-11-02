@@ -15,9 +15,6 @@ data/sessions/
 data/tmp/
 temp/
 
-
-.gitmodules
-.status-branch-unstable
 copy-free-scripts-from-lib.php
 svn/*
 .svn/
