@@ -22,6 +22,9 @@
 
 ## history
 
+- [00%]  Extend "History size exceed. Oldest entry droped" message. 
+    Show number of entrys and history limit
+
 - [10%] extend history, multiple undo's, detection of already removed files.. 
       what to do then? how to report? if target file exists (keep copy or 
       replace? in batch?) ?
