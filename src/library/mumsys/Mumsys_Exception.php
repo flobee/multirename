@@ -1,1 +1,1 @@
-../../../externals/mumsys-library-default/src/Mumsys_Exception.php
+../../../externals/mumsys/library/src/Mumsys_Exception.php

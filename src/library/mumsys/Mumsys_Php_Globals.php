@@ -1,1 +1,1 @@
-../../../externals/mumsys-library-default/src/Mumsys_Php_Globals.php
+../../../externals/mumsys/library/src/Mumsys_Php_Globals.php

@@ -1,1 +1,1 @@
-../../../externals/mumsys-library-default/src/Mumsys_File_Interface.php
+../../../externals/mumsys/library/src/Mumsys_File_Interface.php

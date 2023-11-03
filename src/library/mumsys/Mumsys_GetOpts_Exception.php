@@ -1,1 +1,1 @@
-../../../externals/mumsys-library-default/src/Mumsys_GetOpts_Exception.php
+../../../externals/mumsys/library/src/Mumsys_GetOpts_Exception.php
