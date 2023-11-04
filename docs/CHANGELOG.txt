@@ -1,5 +1,27 @@
 # Changes of Multirename
 
+2023-11
+    - Updates multirename... VERSION 1.4.6
+    - Updates multirename inline docs
+    - Fixes help output
+    - Updates tests
+    - Improves CS, tests, SCA (Static Code Analysis)
+
+2022-03
+    - Updates for php 8.1
+
+2019-XX
+    - Upgrades to php7.3..8.0
+
+2019-10
+    - Improves check of logger usage on init.
+    - Improves phpdoc using phpstan up to level 5 now
+    - Fixes getVersionLong()
+
+2018-XX
+    - Removes exception for root user but send a warning
+    - Updates getVersionLong() to show the global version ID
+
 2017-04-21
     - Bufix handling --link, --linkway
     - Updates start script to use Logger decorator for messages

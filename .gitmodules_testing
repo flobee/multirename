@@ -1,11 +1,11 @@
 [submodule "externals/mumsys/library"]
-	path = externals/mumsys/library
-	url = https://github.com/Mumsys/Library.git
-	branch = testing
+    path = externals/mumsys/library
+    url = https://github.com/Mumsys/Library.git
+    branch = testing
 
 [submodule "externals/multirename.wiki"]
-	path = externals/multirename.wiki
-	url = https://github.com/Multirename/multirename.wiki.git
-	branch = testing
+    path = externals/multirename.wiki
+    url = https://github.com/Multirename/multirename.wiki.git
+    branch = testing
     # public goes only to the master branch!
 

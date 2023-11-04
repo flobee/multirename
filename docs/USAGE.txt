@@ -11,12 +11,12 @@ in php context e.g: in your own scripts this is the way.
 
 For the moment (may be for all the time):
 
-- A logger tracks all actions to a log file (default in /tmp/ (max.3MB) if you 
-dont change it). This make sence in the current state of the program to find and 
-debug open or not detected bugs for you, me....
+- A logger tracks all actions to a log file (default in `multirename/tmp/` (max.
+3MB) if you  dont change it). This make sence in the current state of the 
+program to find and debug open or not detected bugs for you, me....
 
 - Configurations can be saved but only one config per path at the moment. (i'm 
-still thinking about to extend it or not! It make things complicated and a GUI 
+still thinking about to extend it or not! It makes things complicated and a GUI 
 would be the next step to handle thouse parts. Maybe someone likes do it?
 
 
@@ -25,8 +25,8 @@ would be the next step to handle thouse parts. Maybe someone likes do it?
 - When executing the program you may think something went wrong because it seems
 that the programm hangs: Probably you have enabled the --keepcopy flag and there
 is a hugh file which will be copied and not renamed! Dont break operations! This
-can loose informations for recovery/ undo action. Have look at the log file 
-first (tail -f /tmp/multirename.$USER.log) befor stop the process. 
+can loose informations for a recovery or undo action. Have look at the log file 
+first (tail -f multirename/tmp/multirename.$USER.log) befor stop the process. 
 
 
 ## Usage options (--help)
@@ -45,9 +45,9 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Semicolon separated list with key value pairs for substitution eg:
         --substitutions ä=ae;ö=oe;ß=ss; =_;'regex:/^(\d{5})$/i=x_\$1'... .As
         simple feature you can use %path1%...%pathN% parameters to substitute
-        path informations in substitution values the file belongs to. For
-        moreinformation see --sub-paths but only use --sub-paths if you really
-        need it. It can became strange side effects when enabling it. * Required
+        path informations in substitution values the file belongs to. For more
+        information see --sub-paths but only use --sub-paths if you really need
+        it. It can became strange side effects when enabling it. * Required
 
     --sub-paths
         Flag; Enable substitution using paths. Feature for the substitution:
@@ -90,9 +90,10 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         relativ links will be created
 
     --linkway <yourValue/s>
-        Type of the link to be created relative or absolut: ("rel"|"abs"),
-        default: "rel". This will be used internally if you use --link soft;rel
-        the linkway will be extracted from that line
+        Optional for --link: Type of the link to be created: Relative or absolut
+        ("rel"|"abs"), default: "rel". This will be used internally if you use
+        e.g: --link soft:rel or --link soft:abs the linkway will be extracted
+        from that line. Otherwise use --link soft --linkway rel|abs
 
     --history|-h
         Flag; If set this will enable the history and tracks all actions for a
@@ -108,7 +109,7 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
     --batch
         Flag; Not implemented yet. Run the job recusiv from given --path as
         start directory and start renaming. If a new configuration in the sub
-        directories exists is trys to load the configuration for batch-mode and
+        directories exists it trys to load the configuration for batch-mode and
         execute it. This enables --recursiv and --history
 
     --plugins
@@ -135,8 +136,9 @@ first (tail -f /tmp/multirename.$USER.log) befor stop the process.
         Flag; Deletes the config from given --path
 
     --show-config
-        Flag; Shows the config parameter from a saved config to check or rebuild
-        it. Use it with --from-config
+        Flag; Shows the config parameters from a saved config to check or
+        rebuild it. Use it with --from-config=/some/path/movies/ --show-config
+        (see --save-config)
 
     --loglevel|--ll <yourValue/s>
         Logging level for the output of messages (0=Emerg ... 7=verbose/debug).

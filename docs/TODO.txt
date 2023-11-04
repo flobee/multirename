@@ -13,12 +13,14 @@
             what to do then? how to report? if target file exists (keep copy or
             replace? in batch?) ?
 
+
 ## General
 
 - [34%] cleanup code: eg: substitution in a new methode, testmode in a new 
         methode eg (tbc.): actionTest(), actionRename()
 
 - [50%] improve the (test)output. limit messages e.g.: 'DONE'
+
 
 ## history
 
@@ -28,6 +30,7 @@
 - [10%] extend history, multiple undo's, detection of already removed files.. 
       what to do then? how to report? if target file exists (keep copy or 
       replace? in batch?) ?
+
 
 ## config and presets
 
@@ -39,6 +42,7 @@
 
 - [00%] rename list of given (existing|nonexisting?) files or output shell args 
         or a list of from->to?
+
 
 ## new features
 
@@ -61,7 +65,7 @@
 
 # Done
 
- - [99%] Where it happens!
+ - [99%] Where it happens! currently! DB make things complicated over the ages.
       Config files centalized or where it happens?
       where it happens:
       - bad 
