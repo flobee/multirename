@@ -3,7 +3,8 @@
 ## Contributors are welcome!
 
 Checkout a branch of stable|testing|unstable including updates and switching
-to one of it and including the externals with updates, use the helper script:
+to one of it (probably unstable) and including the externals with updates, use
+the helper script:
 
     ./helper/gitupdate.sh [branchname]
 
@@ -14,21 +15,22 @@ Staging areas are "unstable" -> "testing" -> "stable"
 
 "stable" should be always the latest stable release! (Incl. Hotfixes)
 
-All new code/ development shoud go to "unstable". 
+All new code/ development should go to "unstable".
 Also, if needed, to the externals which having also these staging areas.
 
 If you would like to add features or push some improvements: The unstable branch 
 is basicly the entry point and the latest code base.
 Checkout the "unstable" branch create a new branch for your part to start in.
     
-    git clone https://github.com/flobee/multirename.git
+    git clone https://github.com/Multirename/multirename.git
     cd multirename
     ./helper/gitupdate.sh unstable
     git checkout -b yourNewBranch
 
 Note: You may also create own branches for the existing externals
 
-    cd external/<name>
+    cd externals/<name.../...>
+    git checkout unstable
     git checkout -b yourNewBranch
 
 If tests exists and the function of fixed bugs, new features is verified it will
@@ -46,13 +48,14 @@ workflow:
 
     # checkout given branch of the main project
     # init, updates and pulls the submodules for the given branch
-    ./helper/gitupdate.sh [unstable|testing|stable]
+    ./helper/gitupdate.sh unstable
+    # Create a pull request
 
-    # After a merge, e.g.:
+    # the maintainer will follow the workflow: After a merge, e.g.:
     ./helper/gitupdate.sh testing
     git merge unstable
-    # you need to check if it maps to testing and not unstable branches
-    ls -al .gitmodules # which should link to the testing file
+    # or have a look to helper/gitmerge.sh BranchToMerge
+    # to stage the changes   
 
 
 ## Deployment
@@ -63,19 +66,18 @@ files in the docs/ are involved. If you modify them there using markdown syntax
 the deployment and the creation with new documentation will be generated.
 
     # Will generate .md files for the wiki and the summary file /README.md
-    php make.php deploy
+    # Best option does all:
+    php make.php deploy --compress
 
-    # will also create a new tar file with the release version in /deploy (the
-    # version string must match to the current version of the multirename class)
-    php make.php deploy '1.0.0-RC1'
-
-Please use `make.php clean` after a deploy to not commit those files to the 
-repository.
+Please use `make.php clean` after copying the files for you needs. Deploy files
+are not to commit to the repository. Only the maintainer will do for stable 
+releases.
 
 When commiting new stuff you should first commit the externals changes and at 
 least the project version. The external commit ID should map to the commit ID of
 the project when other people will check it out. I know this is not that handy 
-but i have no other/better idea at the moment to handle it.
+but i have no other/better idea at the moment to handle it and the projects are
+very close to each other.
 
 
 

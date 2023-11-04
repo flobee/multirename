@@ -46,9 +46,9 @@ do
         echo '+------------------------------------------------------------------------------';
         echo "| checkout branch $mybranch";
 
-        ln -sf .gitmodules_$mybranch .gitmodules
+        cp .gitmodules_$mybranch .gitmodules
         echo '+------------------------------------------------------------------------------';
-        echo "| link .gitmodules_$mybranch TO .gitmodules";
+        echo "| copy .gitmodules_$mybranch TO .gitmodules";
     fi
 done
 
@@ -57,19 +57,19 @@ echo '+-------------------------------------------------------------------------
 echo '| update base program';
 git pull --all;
 
-if [ ! -d externals/mumsys-library-default ]; then
+if [ ! -d externals/mumsys/library ]; then
     echo '+------------------------------------------------------------------------------';
-    echo '| adds core library as submodule in "externals/mumsys-library-default"';
-    git submodule add https://github.com/flobee/mumsys-library-default.git externals/mumsys-library-default
+    echo '| adds core library as submodule in "externals/mumsys/library"';
+    git submodule add https://github.com/Mumsys/Library.git externals/mumsys/library
 fi
 
 if [ ! -d externals/multirename.wiki ]; then
     echo '+------------------------------------------------------------------------------';
     echo '| adds wiki docs as submodule in "externals/multirename.wiki"';
-    git submodule add https://github.com/flobee/multirename.wiki.git externals/multirename.wiki
+    git submodule add https://github.com/Multirename/multirename.wiki.git externals/multirename.wiki
 fi
 
-if [ ! -f externals/mumsys-library-default/.git ]; then
+if [ ! -f externals/mumsys/library/.git ]; then
     echo '+------------------------------------------------------------------------------';
     echo '| init submodules';
     git submodule update --init --recursive;
@@ -77,6 +77,7 @@ if [ ! -f externals/mumsys-library-default/.git ]; then
     # echo '+------------------------------------------------------------------------------';
     # echo '| update submodules';
     # git submodule update --remote; # --recursive;
+    # git submodule update --init --recursive;
 fi
 
 echo '+------------------------------------------------------------------------------';
@@ -91,5 +92,5 @@ git pull;'
 echo "\ndone.\n";
 
 
-exit;
+exit 0;
 

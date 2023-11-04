@@ -11,17 +11,15 @@
  * @version 1.1.0 Created 2015-04-06
  */
 
-// cd to project root
+// cd to project root and revert after
 $dirCurrent = getcwd();
-chdir(__DIR__ . '/../');
+chdir( __DIR__ . '/../' );
 $newRelease = false;
 
-
-ini_set('include_path', 'src/library/mumsys/');
+ini_set( 'include_path', 'src/library/mumsys/' );
 require_once('Mumsys_Loader.php');
 spl_autoload_extensions( '.php' );
-spl_autoload_register( array( 'Mumsys_Loader', 'autoload'));
-
+spl_autoload_register( array('Mumsys_Loader', 'autoload') );
 
 /**
  * relevant docs for wiki and readme.md ONLY for the stable/master branch at github or
@@ -47,10 +45,15 @@ $docs = array(
 /**
  * Creates the multirename.phar file
  */
-function makePhar($version='0.0.0')
+function makePhar( $version = '0.0.0' )
 {
+    $pharFile = 'deploy/multirename-' . $version . '.phar';
+    if ( file_exists( $pharFile ) ) {
+        return false;
+    }
+
     $phar = new Phar(
-        "deploy/multirename-" . $version . ".phar",
+        $pharFile,
         FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME,
         "multirename.phar"
     );
@@ -60,7 +63,7 @@ function makePhar($version='0.0.0')
     //$stub = "#!/usr/bin/env php\n" . $phar->createDefaultStub('multirename.php','multirename.php');
     //file_put_contents('build/stub.php', $stub);
     exec('php -w build/stub.php > build/stub.php.min');
-    $phar->setStub("#!/usr/bin/env php\n" . file_get_contents('build/stub.php.min') );
+    $phar->setStub( "#!/usr/bin/env php\n" . file_get_contents( 'build/stub.php.min' ) );
     //$phar->setStub( $stub );
 
     $libFiles = array(
@@ -102,9 +105,13 @@ function makePhar($version='0.0.0')
 }
 
 
-function updUsageFile($keyword='## Usage options (--help)') {
-    // task: scann file and replace all after "## Usage options" with multirename --help
-
+/**
+ * Scan file and replace all after "## Usage options" with multirename --help output
+ *
+ * @param string $keyword
+ */
+function updUsageFile( $keyword = '## Usage options (--help)' )
+{
     $newUsage = '';
 
     $file = './docs/' . 'USAGE.txt';
@@ -157,6 +164,8 @@ function makeReadmeMd()
     $summary = [];
     $content = '';
     $target = './README.md';
+    // TOC tree to show. Value 1 - ~5
+    $levelsToShow = 2;
 
     $summary = [];
     $content = '';
@@ -175,35 +184,41 @@ function makeReadmeMd()
         {
             $content .= $line;
 
-            // build summary list
-            if ($line !== "# Summary\n" && preg_match('/^(#|##)?( \w)+/i', $line, $matches))
-            {
+            // build summary list (h1-h6)
+            if ( $line !== "# Summary\n"
+                && preg_match( '/^(#|##|###|####|#####|######)?( \w)+/i', $line, $matches ) ) {
+                if ( ($cntIndent = strlen( $matches[1] ) - 1 ) < 0 ) {
+                    $cntIndent = 0;
+                }
+
+                if ($levelsToShow -1 < $cntIndent ) {
+                    continue;
+                }
+
                 $prefix = strstr($line, ' ', true);
                 $line = str_replace('#', '', $line);
 
-                if (!isset($prefix[0])) {
+                if (!isset($prefix[0])) { // ???
                     echo 'ERROR with line: "' . $line . '"' . PHP_EOL;
                 }
 
-                $prefix[0] = str_replace('#', '-', $prefix[0]);
-                $prefix = str_replace('-#', "\t-", $prefix);
+                $indent = str_repeat( "\t", $cntIndent );
+                $prefix = str_replace($matches[1], $indent . '-', $prefix);
+
                 $line = trim($line);
-
                 $linkLine = strtolower($line);
-
                 $linkLine = preg_replace('/(\s|\W)+/', '-', $linkLine);
                 $linkLine = trim($linkLine, '-');
 
-                // the docs have *nix ending
+                // the docs have *nix ending: \n
                 $summary[] = $prefix . ' [' . $line . '](#' . $linkLine . ')' . "\n";
             }
 
         }
     }
 
-    $summary = '# Summary' . PHP_EOL . PHP_EOL .  implode('', $summary);
+    $summary = '# Summary' . "\n" . "\n" .  implode('', $summary);
     $content = str_replace('# Summary', $summary, $content);
-
     // replace makers
     $content = str_replace(array('##VERSIONSTRING##'), array(Mumsys_Multirename::VERSION), $content);
     file_put_contents($target, $content);
@@ -217,114 +232,147 @@ function mkWikiMd()
 {
     global $docs;
 
-    foreach ($docs as $doc => $wikifile)
-    {
-        if (is_int($doc)) {
+    foreach ( $docs as $doc => $wikifile ) {
+        if ( is_int( $doc ) ) {
             continue;
         }
 
-        $text = file_get_contents('docs/' . $doc);
-        $text = str_replace(array('##VERSIONSTRING##'), array(Mumsys_Multirename::VERSION), $text);
-        file_put_contents($wikifile, $text);
+        $text = str_replace(
+            array('##VERSIONSTRING##'),
+            array(Mumsys_Multirename::VERSION),
+            file_get_contents( 'docs/' . $doc )
+        );
+        file_put_contents( $wikifile, $text );
     }
-
 }
-
 
 
 try
 {
-    require_once 'Mumsys_Multirename.php';
+    $cliOptsCfg = array(
+        'install' => 'Compile the phar file',
+        'clean' => 'Removes the phar and created tmp files',
+        'deploy' => array(
+            'Generates the phar file and updates the wiki docs and /README.md file.' . PHP_EOL => '',
+
+            '--compress' => 'Flag; If given e.g: `php make.php deploy '
+            . '--compress` it creates e.g `deploy/multirename-CURRENT_VERSION.tgz` '
+            . 'including the phar and the README.md',
+        ),
+        '--help|-h' => 'Show this help',
+    );
+    $cliOpts = new Mumsys_GetOpts( $cliOptsCfg );
+    $cliOptsResult = $cliOpts->getResult();
+
+    if ( isset( $cliOptsResult['help'] ) ) {
+        echo $cliOpts->getHelp();
+        exit(); // only here stop to prevent action calls
+    }
+
+    if ( $cliOptsResult === array() ) {
+        $cliOptsResult['help'] = true;
+    }
+
+    //require_once 'Mumsys_Multirename.php';
     echo 'Make file for ' . Mumsys_Multirename::getVersion() . PHP_EOL . PHP_EOL;
     $version = Mumsys_Multirename::VERSION;
-    $testRelease = trim(@$_SERVER['argv'][2]);
-    if ($testRelease == $version) {
-        $newRelease = $version;
+
+
+    foreach ( $cliOptsResult as $action => $actionOptions ) {
+        switch ( $action ) {
+            case 'install':
+                echo 'run: ' . $action . ' start:' . PHP_EOL;
+                makePhar( $version );
+
+                if ( !file_exists( 'deploy/multirename-' . $version . '.phar' ) ) {
+                    echo 'deploy/multirename-' . $version . '.phar not found. '
+                        .'Creation failed!
+                    ';
+                } else {
+                    echo 'If you dont see any errors... multirename-' . $version
+                        . '.phar was created successfully' . PHP_EOL
+                        . PHP_EOL
+                        . '#### test it:' . PHP_EOL
+                        . '# chmod +x deploy/multirename-' . $version . '.phar' . PHP_EOL
+                        . '# ./deploy/multirename-' . $version . '.phar --help' . PHP_EOL
+                        . '#' . PHP_EOL
+                        . '### make globaly available' . PHP_EOL
+                        . '# mv build/multirename-' . $version . '.phar /usr/local/bin/multirename' . PHP_EOL
+                        . '# multirename --help' . PHP_EOL
+                        . PHP_EOL
+                        . PHP_EOL
+                        ;
+                }
+                echo 'run: ' . $action . ' end.' . PHP_EOL;
+                break;
+
+            case 'clean':
+                echo 'run: ' . $action . ' start:' . PHP_EOL;
+                $cleanList = array(
+                    'build/stub.php.min' => 'Precompiled by phar extension',
+                    'deploy/multirename.phar' => 'The created multirename.phar file',
+                    'deploy/multirename-' . $version . '.phar' => 'The created multirename.VERSION.phar file',
+                    'deploy/multirename-' . $version . '.tgz' => 'The created compressed package',
+                );
+                foreach ( $cleanList as $idx => $message ) {
+                    if ( file_exists( $idx ) ) {
+                        unlink( $idx );
+                        printf( 'Removed file "%1$s": %2$s%3$s', $idx, $message, PHP_EOL );
+                    }
+                }
+                echo 'run: ' . $action . ' end.' . PHP_EOL . PHP_EOL;
+                break;
+
+            case 'deploy':
+                echo 'run: ' . $action . ' start:' . PHP_EOL;
+                // for deployment of a new releases or updating the docs
+                makePhar( $version );
+
+                updUsageFile('## Usage options (--help)');
+                echo 'USAGE.txt updated' . PHP_EOL;
+
+                makeReadmeMd();
+                echo 'README.md created' . PHP_EOL;
+
+                mkWikiMd();
+                echo 'Wiki files created' . PHP_EOL;
+
+                $compress = $actionOptions['compress'] ?? false;
+                if ( $compress ) {
+                    // rename('build/multirename.phar', 'build/multirename-'.$version.'.phar');
+                    $tgzFile = 'deploy/multirename-'.$version.'.tgz';
+                    if ( file_exists( $tgzFile ) ) {
+                        echo 'EXISTS: tgz in deploy/ already exists. Asume only one package per version' . PHP_EOL;
+                    } else {
+                        $cmd = 'tar -czf "' . $tgzFile . '" '
+                            . 'deploy/multirename-' . $version . '.phar '
+                            . 'docs/LICENSE.txt '
+                            . 'README.md'
+                            ;
+                        exec( $cmd );
+                        echo 'tgz in deploy/ created' . PHP_EOL;
+                    }
+                }
+                echo 'run: ' . $action . ' end.' . PHP_EOL . PHP_EOL;
+                break;
+
+            default:
+                echo <<<EOTXT
+    Please read the README.txt and INSTALL.txt befor you go on.
+    Deployment tasks: Please read the CONTRIBUTE.txt informations
+
+    Several actions possible, e.g: make.php clean install deploy --compress
+
+    EOTXT;
+                echo $cliOpts->getHelp();
+                break;
+        }
     }
-
-    switch (@$_SERVER['argv'][1])
-    {
-        case 'install':
-            makePhar($version);
-
-            if (!file_exists('deploy/multirename-' . $version . '.phar')) {
-                echo 'deploy/multirename-'.$version.'.phar not found. Creation failed!
-                ';
-            } else {
-                echo 'If you dont see any errors... multirename-'.$version.'.phar was created successfully
-
-#### test it:
-# chmod +x deploy/multirename-'.$version.'.phar
-# ./deploy/multirename-'.$version.'.phar --help
-#
-### make globaly available
-# mv build/multirename-'.$version.'.phar /usr/local/bin/multirename
-# multirename --help
-
-
-';
-
-            }
-
-            break;
-
-        case 'clean':
-            @unlink('build/stub.php.min');
-            @unlink('deploy/multirename.phar');
-            @unlink('deploy/multirename-'.$version.'.phar');
-            echo 'clean complete' . PHP_EOL;
-
-            break;
-
-        case 'deploy':
-            // for deployment of a new releases or updating the docs
-            makePhar($version);
-
-            updUsageFile('## Usage options (--help)');
-            echo 'USAGE.txt updated' . PHP_EOL;
-
-            makeReadmeMd();
-            echo 'README.md created' . PHP_EOL;
-
-            mkWikiMd();
-            echo 'Wiki files created' . PHP_EOL;
-
-            if ($newRelease) {
-                // rename('build/multirename.phar', 'build/multirename-'.$version.'.phar');
-
-                $cmd = 'tar -czf deploy/multirename-'.$version.'.tgz '
-                    . 'deploy/multirename-'.$version.'.phar '
-                    . 'docs/LICENSE.txt '
-                    . 'README.md'
-                    ;
-                exec($cmd);
-                echo 'tgz in deploy/ created' . PHP_EOL;
-            }
-
-            echo PHP_EOL . 'done.' . PHP_EOL;
-
-            break;
-
-        default:
-            echo <<<EOTXT
-Please read the README.txt and INSTALL.txt befor you go on.
-Deployment tasks: Please read the CONTRIBUTE.txt informations
-
-Options:
-    php make.php install
-    php make.php clean
-    php make.php deploy [optional: VersionID to create a bundled tar file]
-
-
-EOTXT;
-            break;
-    }
-
-} catch (Exception $e) {
+} catch ( Exception $e ) {
     echo $e->getMessage() . PHP_EOL;
     echo $e->getTraceAsString() . PHP_EOL;
-    exit(1);
+    exit( 1 );
 }
 
 
-chdir($dirCurrent);
+chdir( $dirCurrent );

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/ash
 
 ###############################################################################
 # License
@@ -27,7 +27,7 @@
 # "stable" should be always the latest stable release!
 # All new code/ development goes to unstable. Also, if needed to the externals.
 # If tests exists and the function of fixed bugs, new features is verified it
-# will be merged to "testing" (collecting versions, feature)... the next release
+# will be merged to "testing" (collecting versions, features).. the next release
 # candidate.
 # Hotfixes will go to extra branches and will be merged directly to the "stable"
 #
@@ -38,7 +38,7 @@
 ###############################################################################
 
 if [ "" = "$1" ]; then
-    echo "# run: ./helper/gitmerge.sh [branch:[stable|testing|unstable]ToMergeIntoTheCurrentOne]";
+    echo "# run: ./helper/gitmerge.sh [branch:[stable|testing|unstable]BranchNameToMergeIntoTheCurrentOne]";
     exit 1;
 fi
 
@@ -65,7 +65,7 @@ do
 #           cd "$toplevel/$name" && git merge -m "gitmerge.sh $mybranch # to $branch" $mybranch;'
 
     else
-        echo "| notting to do for $mybranch";
+        echo "| nothing to do for $mybranch";
     fi
 done
 
