@@ -715,10 +715,11 @@ e.g: multirename --from-config /path --save-config
 # Changes of Multirename
 
 2023-11
-    - Updates multirename... VERSION 1.4.6
+    - Updates multirename... VERSION 2.4.6
     - Updates multirename inline docs
     - Fixes help output
-    - Updates tests
+    - Improves make file to create phar files
+    - Updates tests (in lib)
     - Improves CS, tests, SCA (Static Code Analysis)
 
 2022-03
@@ -735,6 +736,10 @@ e.g: multirename --from-config /path --save-config
 2018-XX
     - Removes exception for root user but send a warning
     - Updates getVersionLong() to show the global version ID
+
+2018-03-19
+    - Adds global version ID ./multirename -v
+    - Version 1.4.4
 
 2017-04-21
     - Bufix handling --link, --linkway
