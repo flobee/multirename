@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Multirename
+ * Multirename - Runner for the multirename tool at https://github.com/Multirename/
  * for MUMSYS Library for Multi User Management System
  *
  * @license LGPL Version 3 http://www.gnu.org/licenses/lgpl-3.0.txt
  * @copyright (c) 2015 by Florian Blasel
- * @author Florian Blasel <flobee.code@gmail.com>
+ * @author Florian Blasel <[ba|z|a]sh: echo 1l2b33.code@EmAil.c2m | tr 123AE foeag>
  *
  * @category    Mumsys
  * @package     Library
  * @subpackage  Multirename
- * @version 1.4.4
+ * @version 2.4.6
  * Created 28.02.2015
  */
 
@@ -23,10 +23,12 @@
 
 
 $pathLibrary = __DIR__ . '/library/mumsys';
+
+// phar file needs an absolut location!!
 $pathLogfile = '/tmp/';
 
 // --- misc -------------------------------------------------------------------
-error_reporting( -1 );
+error_reporting( E_ALL );
 ini_set( 'display_errors', true );
 ignore_user_abort( false );
 
@@ -38,7 +40,6 @@ date_default_timezone_set( 'Europe/Berlin' );
 require_once( $pathLibrary . '/Mumsys_Loader.php');
 spl_autoload_extensions( '.php' );
 spl_autoload_register( array('Mumsys_Loader', 'autoload') );
-
 
 // --- prepare the logger -----------------------------------------------------
 if ( empty( $_SERVER['REMOTE_USER'] ) ) {
@@ -97,8 +98,6 @@ function myErrorHandler( $code, $message, $file, $row )
 set_exception_handler( 'myExceptionHandler' );
 set_error_handler( 'myErrorHandler' );
 
-
-
 // --- lets go ----------------------------------------------------------------
 
 
@@ -131,7 +130,7 @@ catch ( Mumsys_Exception $err ) {
     $logger->log( $err->getMessage(), 0 );
 }
 catch ( Exception $e ) {
-    $logger->log( 'Catched exception: ', 0 );
+    $logger->log( 'Standard exception found: ', 0 );
     $logger->log( $e->getMessage(), 0 );
     $logger->log( $e->getTraceAsString(), 0 );
 }

@@ -1,1 +1,1 @@
-../../../externals/mumsys-library-default/src/Mumsys_Logger_Decorator_Messages.php
+../../../externals/mumsys/library/src/Mumsys_Logger_Decorator_Messages.php

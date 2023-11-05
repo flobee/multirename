@@ -1,3 +1,6 @@
+# the current branch defines the ignores for git
+# workflow: unstable->testing->stable
+
 # Composer files
 composer.phar
 vendor/
@@ -9,15 +12,13 @@ config/autoload/*.local.php
 # *.mo
 
 # Data
+tmp/
 data/logs/
 data/cache/
 data/sessions/
 data/tmp/
 temp/
 
-
-.gitmodules
-.status-branch-unstable
 copy-free-scripts-from-lib.php
 svn/*
 .svn/
@@ -25,9 +26,9 @@ svn/*
 /.settings
 /.project
 /.buildpath
-/.gitmodules
 /nbproject
 phpunit.log.xml
+.phpunit.result.cache
 
 /docs/CodeCoverage/*
 /docs/API/*
