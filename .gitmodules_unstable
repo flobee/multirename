@@ -8,3 +8,8 @@
     url = https://github.com/Multirename/multirename.wiki.git
     branch = unstable
     # public goes only to the master branch!
+
+[submodule "bin"]
+    path = bin
+    url = git@github.com:Multirename/bin.git
+    branch = master
